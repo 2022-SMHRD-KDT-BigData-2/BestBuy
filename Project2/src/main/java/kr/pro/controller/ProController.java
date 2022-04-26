@@ -74,13 +74,17 @@ public class ProController {
    
    //사업자회원업데이트
    @RequestMapping("/updateMember.do")
-   public String updateMember(Member vo) {
+   public String updateMember(Member vo,HttpServletRequest request) {
 	   proMapper.updateMember(vo);
+	   if (vo != null) {
+		   HttpSession session = request.getSession();
+		   session.invalidate();  
+	   }
 	   return "redirect:/main.do";
    }
    
    //로그아웃
-   @PostMapping("/logout.do")
+   @RequestMapping("/logout.do")
    public String logout(HttpServletRequest request) {
 	   HttpSession session = request.getSession();
 	   session.invalidate();

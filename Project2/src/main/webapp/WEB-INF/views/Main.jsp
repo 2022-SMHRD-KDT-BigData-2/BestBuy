@@ -157,6 +157,24 @@
             </div>
             </form>
         </div>
+        
+	<!--비밀번호 재확인 부분-->
+    <div class="login-cover">
+        <form action="#">
+            <div class="login">
+                <div class="login_top">
+                    <h2>사업자등록</h2>
+                </div>
+                <div class="login_id">
+                    <h3>비밀번호 확인</h3>
+                    <input type="password" name="pwcheck" placeholder="비밀번호를 입력하세요.">
+                </div>
+                <div class="modify">
+                    <button type="submit" class="modify" name="modify">정보수정</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </form>
 </body>
 </html>

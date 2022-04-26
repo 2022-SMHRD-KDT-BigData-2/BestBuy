@@ -4,12 +4,12 @@ public class Member {
 	private String u_id;
 	private String u_pw;
 	private String u_nick;
-	private String u_num;
 	private String u_pnum;
 	private String u_add;
-	private String u_shopping;
-	
-	public Member() {}
+	private String u_num;
+
+	public Member() {
+	}
 
 	public Member(String u_num) {
 		super();
@@ -22,24 +22,13 @@ public class Member {
 		this.u_pw = u_pw;
 	}
 
-	public Member(String u_id, String u_pw, String u_nick, String u_pnum) {
+	public Member(String u_id, String u_pw, String u_nick, String u_pnum, String u_add) {
 		super();
 		this.u_id = u_id;
 		this.u_pw = u_pw;
 		this.u_nick = u_nick;
-		this.u_pnum = u_pnum;
-	}
-
-	public Member(String u_id, String u_pw, String u_nick, String u_num, String u_pnum, String u_add,
-			String u_shopping) {
-		super();
-		this.u_id = u_id;
-		this.u_pw = u_pw;
-		this.u_nick = u_nick;
-		this.u_num = u_num;
 		this.u_pnum = u_pnum;
 		this.u_add = u_add;
-		this.u_shopping = u_shopping;
 	}
 
 	public String getU_id() {
@@ -66,14 +55,6 @@ public class Member {
 		this.u_nick = u_nick;
 	}
 
-	public String getU_num() {
-		return u_num;
-	}
-
-	public void setU_num(String u_num) {
-		this.u_num = u_num;
-	}
-
 	public String getU_pnum() {
 		return u_pnum;
 	}
@@ -90,12 +71,12 @@ public class Member {
 		this.u_add = u_add;
 	}
 
-	public String getU_shopping() {
-		return u_shopping;
+	public String getU_num() {
+		return u_num;
 	}
 
-	public void setU_shopping(String u_shopping) {
-		this.u_shopping = u_shopping;
+	public void setU_num(String u_num) {
+		this.u_num = u_num;
 	}
 
 }

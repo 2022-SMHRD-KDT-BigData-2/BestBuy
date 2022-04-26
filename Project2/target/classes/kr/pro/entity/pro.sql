@@ -1,40 +1,75 @@
-drop table board;
+select * from u_info;
+select * from c_info;
 
-create table board(
-	idx number not null,
-	memId varchar2(50) not null,
-	title varchar2(100) not null,
-	content varchar(2000) not null,
-	writer varchar2(30) not null,
-	indate date default sysdate,
-	count number default 0,
-	primary key(idx));
+create table u_info(
+	u_id varchar2(50) not null,
+	u_pw varchar2(100) not null,
+	u_nick varchar2(100) not null,
+	u_pnum varchar2(300),
+	u_add varchar2(300),
+	u_num varchar2(500),
+	primary key(u_id),
+	unique(u_num));
 	
-drop sequence board_idx;
-create sequence board_idx;
-
-insert into board(idx, title, content, writer)
-values(board_idx.nextval, '스프링게시판','스프링게시판','관리자');
-
-insert into board(idx, title, content, writer)
-values(board_idx.nextval, '스프링게시판','스프링게시판','이혜민');
-
-select * from board;
-
-drop table mem_tb1;
-
-create table mem_tbl(
-	memId varchar2(50) not null,
-	memPwd varchar2(50) not null,
-	memName varchar2(50) not null,
-	primary key(memId)
+create table c_info(
+	u_num varchar2(500) not null,
+	c_name varchar2(500) not null,
+	c_add varchar2(500),
+	c_pnum varchar2(500),
+	c_data varchar2(3000),
+	primary key(u_num),
+	foreign key(u_num) references u_info(u_num)
 );
 
-insert into mem_tbl values('smhrd01','smhrd01','관리자');
-insert into mem_tbl values('smhrd02','smhrd02','이혜민');
-insert into mem_tbl values('smhrd03','smhrd03','가을노을');
+create table s_info(
+	s_idx number not null,
+	u_id varchar2(50) not null,
+	p_num number(10)not null,
+	s_date date default sysdate,
+	s_payment number(5),
+	s_amount number(10) not null,
+	s_price varchar2(1000) not null,
+	primary key(s_idx),
+	foreign key(u_id) references u_info(u_id)
+);
+create sequence s_info_idx;
+commit
+create table p_info(
+	p_num number not null,
+	u_num varchar2(500) not null,
+	p_name varchar2(500) not null,
+	p_grade number(5),
+	p_price varchar2(500) not null,
+	p_data varchar2(1000),
+	p_option number(10),
+	primary key(p_num),
+	foreign key(u_num) references u_info(u_num) 
+);
+create sequence p_info_p_num;
 
-select * from mem_tbl;
+create table i_info(
+	i_num number not null,
+	u_num varchar2(500)not null,
+	i_idx number(5),
+	i_class number(5),
+	i_raw varchar2(1000),
+	i_path varchar2(3000),
+	i_save varchar2(3000),
+	i_extension varchar2(500),
+	i_size varchar2(1000),
+	i_grade number(5),
+	primary key(i_num),
+	foreign key(u_num) references u_info(u_num)
+	 );
+create sequence i_info_i_num;
 
-select * from u_info;
-
+create table r_info(
+	r_num number not null,
+	p_num number,
+	r_writer varchar2(500),
+	r_star number(5),
+	r_review varchar2(3000),
+	r_grade number(5),
+	r_date date default sysdate);
+	
+create sequence r_info_r_num;

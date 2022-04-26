@@ -9,9 +9,9 @@
    <!-- API(HicariCP) -->
    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-      <property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"/>
-      <property name="username" value="hr"/>
-      <property name="password" value="hr"/>
+      <property name="jdbcUrl" value="jdbc:oracle:thin:@project-db-stu.ddns.net:1524:XE"/>
+      <property name="username" value="bbuy"/>
+      <property name="password" value="bb123"/>
    </bean>
    
    <!-- HikariDataSource(Connection POOL을 만드는 역할을 한다) -->

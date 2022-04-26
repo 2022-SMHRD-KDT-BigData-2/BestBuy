@@ -73,3 +73,8 @@ create table r_info(
 	r_date date default sysdate);
 	
 create sequence r_info_r_num;
+
+insert into u_info(u_id, u_pw, u_nick,u_num)
+values('1','1','1','1');
+insert into u_info(u_num)
+values('1234');

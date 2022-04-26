@@ -62,10 +62,7 @@ public class ProController {
          HttpSession session = request.getSession();
          session.setAttribute("mvo", theVo);
       }
-      if(theVo.getU_num() == null) {
-    	  return "redirect:UserMain.do";
-      }else
-    	  return "redirect:OwnerMain.do";
+      return "redirect:/main.do";
    }
    
    //회원가입
@@ -82,4 +79,11 @@ public class ProController {
 	   return "redirect:/main.do";
    }
    
+   //로그아웃
+   @PostMapping("/logout.do")
+   public String logout(HttpServletRequest request) {
+	   HttpSession session = request.getSession();
+	   session.invalidate();
+	   return "redirect:/main.do";
+   }
 }

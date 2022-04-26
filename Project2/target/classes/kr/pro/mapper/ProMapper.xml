@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.pro.mapper.ProMapper">
+
+    <select id="userLogin" parameterType="kr.pro.entity.Member" resultType="kr.pro.entity.Member">
+        select * from u_info where u_id=#{u_id} and u_pw=#{u_pw}
+    </select>
+    
+    <insert id ="userJoin" parameterType="kr.pro.entity.Member">
+        insert into u_info(u_id,u_pw,u_nick,u_pnum)
+		values(#{u_id},#{u_pw},#{u_nick},#{u_pnum})
+    </insert>
+    
+    <update id = "updateMember" parameterType="kr.pro.entity.Member">
+        update u_info set u_num = #{u_num}
+        where u_id=#{u_id}
+    </update>
+</mapper>

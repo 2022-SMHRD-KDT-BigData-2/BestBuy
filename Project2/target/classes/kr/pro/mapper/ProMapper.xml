@@ -17,4 +17,8 @@
         update u_info set u_num = #{u_num}
         where u_id=#{u_id}
     </update>
+    
+    <select id="pwcheck" parameterType="kr.pro.entity.Member" resultType="kr.pro.entity.Member">
+        select * from u_info where u_pw=#{u_pw}
+    </select>
 </mapper>

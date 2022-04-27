@@ -13,4 +13,7 @@ public interface ProMapper {
 	
 	// 사업자번호 업데이트
 	public void updateMember(Member vo);
+	
+	// 비밀번호 확인
+	public void pwcheck(Member vo);
 }

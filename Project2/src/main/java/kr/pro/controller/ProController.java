@@ -34,21 +34,11 @@ public class ProController {
 	   return "Login";
    }
    
-   @GetMapping("/UserMain.do")
-   public String UserMain() {
-	   return "UserMain";
-   }
-   
    @GetMapping("/updateMember")
    public String updateMember() {
 	   return "updateMember";
    }
-   
-   @GetMapping("/OwnerMain.do")
-   public String OwnerMain() {
-	   return "OwnerMain";
-   }
-   
+  
    @GetMapping("/Myproduct")
    public String Myproduct() {
 	   return "Myproduct";
@@ -89,5 +79,12 @@ public class ProController {
 	   HttpSession session = request.getSession();
 	   session.invalidate();
 	   return "redirect:/main.do";
+   }
+   
+   //비밀번호 확인
+   @RequestMapping("/pwcheck.do")
+   public String pwcheck(Member vo) {
+	 proMapper.pwcheck(vo);
+	 return "redirect:/updateMember";
    }
 }

@@ -21,11 +21,17 @@
 	function Loginclick(){
 		document.getElementById("login").style.display ='block';
 	}
+	function Loginclick2(){
+		document.getElementById("login").style.display ='none';
+	}
 	function Joinclick(){
 		document.getElementById("join").style.display ='block';
 	}
 	function Joinclick2(){
 		document.getElementById("join").style.display ='none';
+	}
+	function Updateclick(){
+		document.getElementById("update").style.display ='block';
 	}
 </script>
 </head>
@@ -38,24 +44,34 @@
                     <div class="menu">
                         <ul id="nav">
                             <li><a href="#">마켓</a></li>
+                            <c:if test="${!empty mvo.u_num}">
+                            <li><a href="ShoppingList.html">장바구니</a></li>
+                            </c:if>
                             <li><a href="#">기업정보</a>
                                 <ul>                         
-                                    <li><a href="#">기업리스트</a></li>
+                                    <li><a href="#">기업리스트</a></li>                                 
+                                    <li><a href="#">기업등록</a></li>                                                                       
+                                </ul>
+                            </li> 
+                            <li><a href="#">마이페이지</a>
+                                <ul>
+                                	<c:if test="${!empty mvo}">
+                                    <li><a href="memberInfo.html">회원정보 수정</a></li>
                                     <c:if test="${empty mvo.u_num}">
-                                    <li><a href ="${pageContext.request.contextPath}/updateMember">기업등록</a></li>
+                                    <li><a onclick="Updateclick()">사업자 등록</a></li>
                                     </c:if>
                                     <c:if test="${!empty mvo.u_num}">
                                     <li><a href ="${pageContext.request.contextPath}/Myproduct">물품등록</a></li>
                                     </c:if>
-
+                                    </c:if>
                                 </ul>
-                            </li> 
+                            </li>
                             <c:if test="${empty mvo}">                      
                             <li><a onclick="Loginclick()">로그인</a></li>
                             <li><a onclick="Joinclick()">회원가입</a></li>
                             </c:if>
                             <c:if test="${!empty mvo}">                      
-                            <li><a href ="${cpath}/logout.do" >로그아웃</a></li>                           
+                            <li><a href ="${cpath}/logout.do" onclick="alert('로그아웃 하시겠습니까?')">로그아웃</a></li>                           
                             </c:if>
                         </ul>
                     </div>
@@ -94,7 +110,7 @@
                 </div>
                 <div class="login_etc">
                     <div class="join">
-                        <a href ="${pageContext.request.contextPath}/join">회원가입</a>
+                        <a onclick="Joinclick()">회원가입</a>
                     </div>
                     <div class="forgot_pw">
                         <a href ="${pageContext.request.contextPath}/pwsearch.do">아이디 / 비밀번호 찾기</a>
@@ -102,6 +118,7 @@
                 </div>
                 <div class="submit">
                     <button type="submit" class="submit" name="login">로그인</button>
+                    <button type="button" class="submit" onclick="Loginclick2()">돌아가기</button>
                 </div>
             </div>
         </form>
@@ -159,7 +176,7 @@
         </div>
         
 	<!--비밀번호 재확인 부분-->
-    <div class="login-cover">
+    <div class="login-cover" style="display: none" id="update">
         <form action="#">
             <div class="login">
                 <div class="login_top">

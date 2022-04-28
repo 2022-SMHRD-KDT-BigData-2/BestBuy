@@ -73,7 +73,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
+
 	<!-- 추천상품 4개 -->
 	<ul class="top_best">
 		<li>
@@ -85,7 +85,7 @@
 		</li>
 		<li class="best-cell">
 			<div class="img-box">
-				<a href="product.html"><img src="${cpath}/resources/css/ListImage\1.png" alt=""></a>
+				<a href="product.html"><img src="C:\Users\SM014\git\BestBuy\Project2\src\main\webapp\resources\css\image\1.png" alt=""></a>
 			</div>
 			<div class="product-name">영주 별사과 600g</div>
 			<div class="product-price">6930원</div>

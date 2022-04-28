@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.pro.entity.Member;
+import kr.pro.entity.Product;
 import kr.pro.mapper.ProMapper;
 
 @Controller
@@ -39,14 +40,19 @@ public class ProController {
 	   return "updateMember";
    }
   
-   @GetMapping("/Myproduct")
-   public String Myproduct() {
-	   return "Myproduct";
+   @GetMapping("/Myproductimg")
+   public String Myproductimg() {
+	   return "Myproductimg";
    }
    
    @GetMapping("/Market")
    public String Market() {
 	   return "market";
+   }
+   
+   @GetMapping("/Myproduct")
+   public String Myproduct() {
+	   return "Myproduct";
    }
    // 기능처리
    //로그인
@@ -91,5 +97,12 @@ public class ProController {
    public String pwcheck(Member vo) {
 	 proMapper.pwcheck(vo);
 	 return "redirect:/updateMember";
+   }
+   
+   //물품등록
+   @RequestMapping("/product.do")
+   public String product(Product vo) {
+	 proMapper.product(vo);
+	 return "redirect:/Myproductimg";
    }
 }

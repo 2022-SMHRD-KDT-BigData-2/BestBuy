@@ -54,8 +54,7 @@
 	</div>
 	<!--비밀번호가 맞으면 저장됐던 회원정보+사업자번호 작성이 나오는 부분-->
 	<div class="login-cover">
-		<form action="${cpath}/updateMember.do" id="updateMember"
-			method="post">
+		<form action="${cpath}/updateMember.do" id="updateMember" method="post">
 			<div class="container">
 				<div class="form_txtInput">
 					<div class="join_top">

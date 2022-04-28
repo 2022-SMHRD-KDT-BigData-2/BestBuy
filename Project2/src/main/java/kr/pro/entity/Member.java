@@ -1,5 +1,5 @@
 package kr.pro.entity;
-
+//i_info(회원)
 public class Member {
 	private String u_id;
 	private String u_pw;

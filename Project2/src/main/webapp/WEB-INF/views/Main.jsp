@@ -65,8 +65,7 @@
 										<li><a onclick="Updateclick()">사업자 등록</a></li>
 									</c:if>
 									<c:if test="${!empty mvo.u_num}">
-										<li><a
-											href="${pageContext.request.contextPath}/Myproduct">물품등록</a></li>
+										<li><a href="${pageContext.request.contextPath}/Myproduct">물품등록</a></li>
 									</c:if>
 								</ul>
 							</li>

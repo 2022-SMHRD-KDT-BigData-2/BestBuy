@@ -19,6 +19,12 @@
     </update>
     
     <select id="pwcheck" parameterType="kr.pro.entity.Member" resultType="kr.pro.entity.Member">
-        select * from u_info where u_pw=#{u_pw}
+        select * from u_info where u_pw=#{u_pw}}
     </select>
+    
+    <insert id="product" parameterType="kr.pro.entity.Product">
+        insert into p_info (p_num,u_num,p_name,p_grade,p_price,p_kind,p_weight,p_sweet,p_pack,p_data,p_option)
+        values (p_info_p_num.nextval,#{u_num},#{p_name},#{p_grade},#{p_price},#{p_kind},#{p_weight}
+        ,#{p_sweet},#{p_pack},#{p_data},#{p_option})
+    </insert>
 </mapper>

@@ -2,6 +2,7 @@ package kr.pro.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import kr.pro.entity.Member;
+import kr.pro.entity.Product;
 
 @Mapper
 public interface ProMapper {
@@ -16,4 +17,7 @@ public interface ProMapper {
 	
 	// 비밀번호 확인
 	public void pwcheck(Member vo);
+	
+	// 물품등록
+	public void product(Product vo);
 }

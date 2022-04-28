@@ -5,7 +5,10 @@ select * from p_info;
 select * from i_info;
 
 
-drop table i_info;
+drop table p_info;
+
+alter table 'p_info' add p_kind varchar2(500);
+
 create table u_info(
 	u_id varchar2(50) not null,
 	u_pw varchar2(100) not null,
@@ -43,10 +46,14 @@ create table p_info(
 	p_num number not null,
 	u_num varchar2(500) not null,
 	p_name varchar2(500) not null,
-	p_grade number(5),
+	p_grade varchar2(5),
 	p_price varchar2(500) not null,
 	p_data varchar2(1000),
-	p_option number(10),
+	p_option varchar2(10),
+	p_kind varchar2(500),
+	p_weight varchar2(500),
+	p_sweet varchar2(500),
+	p_pack varchar2(500),
 	primary key(p_num),
 	foreign key(u_num) references u_info(u_num) 
 );

@@ -1,6 +1,11 @@
 select * from u_info;
 select * from c_info;
+select * from s_info;
+select * from p_info;
+select * from i_info;
 
+
+drop table i_info;
 create table u_info(
 	u_id varchar2(50) not null,
 	u_pw varchar2(100) not null,
@@ -49,9 +54,8 @@ create sequence p_info_p_num;
 
 create table i_info(
 	i_num number not null,
-	u_num varchar2(500)not null,
+	u_num varchar2(500),
 	i_idx number(5),
-	i_class number(5),
 	i_raw varchar2(1000),
 	i_path varchar2(3000),
 	i_save varchar2(3000),
@@ -74,7 +78,5 @@ create table r_info(
 	
 create sequence r_info_r_num;
 
-insert into u_info(u_id, u_pw, u_nick,u_num)
-values('1','1','1','1');
-insert into u_info(u_num)
-values('1234');
+insert into i_info(i_num,i_path)
+values(i_info_i_num.nextval, '/resources/css/ListImage/4.png');

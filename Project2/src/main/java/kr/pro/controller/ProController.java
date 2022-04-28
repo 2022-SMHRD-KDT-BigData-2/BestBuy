@@ -43,6 +43,11 @@ public class ProController {
    public String Myproduct() {
 	   return "Myproduct";
    }
+   
+   @GetMapping("/Market")
+   public String Market() {
+	   return "market";
+   }
    // 기능처리
    //로그인
    @PostMapping("/login.do")

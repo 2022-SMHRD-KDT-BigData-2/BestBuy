@@ -5,7 +5,7 @@ select * from p_info;
 select * from i_info;
 
 
-drop table p_info;
+drop table i_info;
 
 alter table 'p_info' add p_kind varchar2(500);
 
@@ -62,13 +62,13 @@ create sequence p_info_p_num;
 create table i_info(
 	i_num number not null,
 	u_num varchar2(500),
-	i_idx number(5),
+	i_idx varchar2(300),
 	i_raw varchar2(1000),
 	i_path varchar2(3000),
 	i_save varchar2(3000),
 	i_extension varchar2(500),
 	i_size varchar2(1000),
-	i_grade number(5),
+	i_grade varchar2(5),
 	primary key(i_num),
 	foreign key(u_num) references u_info(u_num)
 	 );

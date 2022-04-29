@@ -3,6 +3,7 @@ package kr.pro.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import kr.pro.entity.Member;
 import kr.pro.entity.Product;
+import kr.pro.entity.Productimage;
 
 @Mapper
 public interface ProMapper {
@@ -20,4 +21,6 @@ public interface ProMapper {
 	
 	// 물품등록
 	public void product(Product vo);
+
+	public void productimg(Productimage vo);
 }

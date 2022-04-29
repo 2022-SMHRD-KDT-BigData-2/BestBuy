@@ -72,11 +72,11 @@
 									<td><input type="text" name="p_price" placeholder="상품가격을 입력해주세요."></td>
 								</tr>
 								<tr>
-									<th><span>test</span></th>
-									<td><input type="text" name="p_option" placeholder="p_option"></td>
+									<th><span>판매옵션</span></th>
+									<td><input type="text" name="p_option" placeholder="판매옵션을 입력해주세요."></td>
 								</tr>
 								<tr>						
-									<th><span>안내사항</span></th></table>
+									<th><span>안내사항</span></th>
 									<!--높이값 설정이 절대 안되는 중!!!!ㅠㅠ..-->
 									<td>
 										<table class="p-info">
@@ -111,5 +111,7 @@
 			</div>
 		</div>
 	</div>
+
+	
 </body>
 </html>

@@ -15,6 +15,9 @@
 <link rel="stylesheet" href="${cpath}/resources/css/market.css">
 </head>
 <body>
+<script type="text/javascript">
+$('input[id=i_idx]'),attr('value','1')
+</script>
 	<div class="img">
 		<!-- 상단 메뉴바 -->
 		<div class="top">
@@ -30,7 +33,7 @@
 					<li><a href="#">마이페이지</a>
 						<ul>
 							<li><a href="memberInfo.html">회원정보 수정</a></li>
-							<li><a href="${pageContext.request.contextPath}/productinsert">물품등록</a></li>
+							<li><a href="${pageContext.request.contextPath}/product">물품등록</a></li>
 						</ul></li>
 					<li><a href="${cpath}/logout.do"
 								onclick="alert('로그아웃 하시겠습니까?')">로그아웃</a></li>
@@ -46,10 +49,12 @@
 	<!-- 이미지등록 -->
 	<div>
 	<form action="${pageContext.request.contextPath}/upload.do" method="post" enctype="multipart/form-data">
+	<label>
+	<input type="text" id="i_idx">
+	<input type="file" name="upload"  ></label>
 	<label><input type="file" name="upload" /></label>
-	<label><input type="file" name="upload" /></label>
-	<input type="hidden"name="u_num" value="${mvo.u_num}" />
-	<button type="submit" class="submit" onclick="img()">이미지등록</button>
+	<input type="hidden"name="p_name" value="${vo.p_name}" />
+	<button type="submit" class="submit">이미지등록</button>
 	</form>
 </div>
 </body>

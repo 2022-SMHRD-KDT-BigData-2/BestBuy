@@ -30,7 +30,7 @@
 					<li><a href="#">마이페이지</a>
 						<ul>
 							<li><a href="memberInfo.html">회원정보 수정</a></li>
-							<li><a href="${pageContext.request.contextPath}/Myproduct">물품등록</a></li>
+							<li><a href="${pageContext.request.contextPath}/product">물품등록</a></li>
 						</ul></li>
 					<li><a href="${cpath}/logout.do"
 								onclick="alert('로그아웃 하시겠습니까?')">로그아웃</a></li>
@@ -51,12 +51,9 @@
 				</div>
 				<form action="${cpath}/product.do" method="post">
 					<div class="p_info">
-						<table>
-							<colgroup>
-								<col width="30%" />
-								<col width="auto" />
-							</colgroup>
-							<tbody>
+						
+							
+							
 								<tr>
 									<th><span>상품명</span></th>
 									<td><input type="hidden"name="u_num" value="${mvo.u_num}" />
@@ -79,7 +76,6 @@
 									<th><span>안내사항</span></th>
 									<!--높이값 설정이 절대 안되는 중!!!!ㅠㅠ..-->
 									<td>
-										<table class="p-info">
 											<tr>
 												<td>종류</td>
 												<td><input type="text" name="p_kind"></td>
@@ -100,10 +96,10 @@
 												<td>설명</td>
 												<td><input type="text" name="p_data"></td>
 											</tr>
-										</table>
+										
 									</td>
 								</tr>
-								</div>
+								
 					<div class="btn_wrap">
 						<button type="submit" class="submit" name="">상품등록</button>
 					</div>

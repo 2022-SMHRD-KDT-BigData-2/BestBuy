@@ -23,13 +23,13 @@
     </select>
     
     <insert id="product" parameterType="kr.pro.entity.Product">
-        insert into p_info (p_num,u_num,p_name,p_grade,p_price,p_kind,p_weight,p_sweet,p_pack,p_data,p_option)
-        values (p_info_p_num.nextval,#{u_num},#{p_name},#{p_grade},#{p_price},#{p_kind},#{p_weight}
+        insert into p_info (u_num,p_name,p_grade,p_price,p_kind,p_weight,p_sweet,p_pack,p_data,p_option)
+        values (#{u_num},#{p_name},#{p_grade},#{p_price},#{p_kind},#{p_weight}
         ,#{p_sweet},#{p_pack},#{p_data},#{p_option})
     </insert>
     
     <insert id="productimg" parameterType="kr.pro.entity.Productimage">
-        insert into i_info (i_num,u_num,i_raw,i_path,i_save)
-        values (i_info_i_num.nextval,#{u_num},#{i_raw},#{i_path},#{i_save})
+        insert into i_info (i_num,p_name,i_raw,i_path,i_save)
+        values (i_info_i_num.nextval,#{p_name},#{i_raw},#{i_path},#{i_save})
 	</insert>
 </mapper>

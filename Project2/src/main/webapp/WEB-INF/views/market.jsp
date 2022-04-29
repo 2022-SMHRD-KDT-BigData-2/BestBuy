@@ -73,45 +73,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- 추천상품 4개 -->
-	<ul class="top_best">
-		<li>
-			<div class="best_item">
-				<h3>추천상품</h3>
-			</div>
-			<button class="button">신상품</button>
-			<button class="button">특가</button>
-		</li>
-		<li class="best-cell">
-			<div class="img-box">
-				<a href="product.html"><img src="C:\Users\SM014\git\BestBuy\Project2\src\main\webapp\resources\css\image\1.png" alt=""></a>
-			</div>
-			<div class="product-name">영주 별사과 600g</div>
-			<div class="product-price">6930원</div>
-		</li>
-		<li class="best-cell">
-			<div class="img-box">
-				<a href="product.html"><img src="${cpath}/resources/css/ListImage\3.png" alt=""></a>
-			</div>
-			<div class="product-name">영주 별사과 600g</div>
-			<div class="product-price">6930원</div>
-		</li>
-		<li class="best-cell">
-			<div class="img-box">
-				<a href="product.html"><img src="${cpath}/resources/css/ListImage\2.png" alt=""></a>
-			</div>
-			<div class="product-name">영주 별사과 600g</div>
-			<div class="product-price">6930원</div>
-		</li>
-		<li class="best-cell">
-			<div class="img-box">
-				<a href="product.html"><img src="${cpath}/resources/css/ListImage\7.png" alt=""></a>
-			</div>
-			<div class="product-name">영주 별사과 600g</div>
-			<div class="product-price">6930원</div>
-		</li>
-	</ul>
 	<!--전체 아이템 리스트 -->
 	<div class="item-cover">
 		<div class="item_List">
@@ -121,6 +82,7 @@
 						<h3>상품리스트</h3>
 					</div>
 				</li>
+				<c:forEach var="vo" items="${ list }">
 				<li class="cell">
 					<div class="img-box">
 						<a href="product.html"><img src="${cpath}/resources/css/ListImage\1.png" alt=""></a>
@@ -128,55 +90,7 @@
 					<div class="product-name">영주 별사과 600g</div>
 					<div class="product-price">6930원</div>
 				</li>
-				<li class="cell">
-					<div class="img-box">
-						<a href="product.html"><img src="${cpath}/resources/css/ListImage\4.png" alt=""></a>
-					</div>
-					<div class="product-name">저탄소 GAP 당도선별 배 1.2kg</div>
-					<div class="product-price">11000원</div>
-				</li>
-				<li class="cell">
-					<div class="img-box">
-						<img src="${cpath}/resources/css/ListImage\3.png" alt="">
-					</div>
-					<div class="product-name">왕사과,왕배</div>
-					<div class="product-price">12900</div>
-				</li>
-				<li class="cell">
-					<div class="img-box">
-						<img src="${cpath}/resources/css/ListImage\2.png" alt="">
-					</div>
-					<div class="product-name">GAP 미시마 사과 2kg</div>
-					<div class="product-price">13990원</div>
-				</li>
-				<li class="cell">
-					<div class="img-box">
-						<img src="${cpath}/resources/css/ListImage\5.png" alt="">
-					</div>
-					<div class="product-name">GAP 신고배 1kg</div>
-					<div class="product-price">10000원</div>
-				</li>
-				<li class="cell">
-					<div class="img-box">
-						<img src="${cpath}/resources/css/ListImage\6.png" alt="">
-					</div>
-					<div class="product-name">실속 성주 참외 1.5kg</div>
-					<div class="product-price">12876원</div>
-				</li>
-				<li class="cell">
-					<div class="img-box">
-						<img src="${cpath}/resources/css/ListImage\7.png" alt="">
-					</div>
-					<div class="product-name">용암 참외 1.2kg</div>
-					<div class="product-price">16900원</div>
-				</li>
-				<li class="cell">
-					<div class="img-box">
-						<img src="${cpath}/resources/css/ListImage\8.png" alt="">
-					</div>
-					<div class="product-name">저탄소 GAP SSO농법 사과1kg</div>
-					<div class="product-price">8990원</div>
-				</li>
+			</c:forEach>	
 			</ul>
 		</div>
 	</div>

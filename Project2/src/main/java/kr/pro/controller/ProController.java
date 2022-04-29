@@ -46,17 +46,17 @@ public class ProController {
 	}
 
 	@GetMapping("/productinsert")
-	public String Myproductimg() {
+	public String productinsert() {
 		return "productinsert";
-	}
-
+	} 
+	
 	@GetMapping("/Market")
 	public String Market() {
 		return "market";
 	}
 
 	@GetMapping("/product")
-	public String Myproduct() {
+	public String product() {
 		return "product";
 	}
 
@@ -107,9 +107,11 @@ public class ProController {
 
 	// 물품등록 (상세정보)
 	@RequestMapping("/product.do")
-	public String product(Product vo) {
+	public String product(Product vo,HttpServletRequest request) {
 		proMapper.product(vo);
-		return "redirect:/main.do";
+		HttpSession session = request.getSession();
+		session.setAttribute("vo", vo);
+		return "redirect:/productinsert";
 	}
 
 	@RequestMapping("/upload.do")
@@ -135,23 +137,20 @@ public class ProController {
 				} catch (IllegalStateException|IOException e  ) {
 					e.printStackTrace();
 				}
-				
-				System.out.println(orifileName);
-				System.out.println(reName);
-				System.out.println(saveDir);
-				
-				String u_num = request.getParameter("u_num");
+				String p_name = request.getParameter("p_name");
 				Productimage.setI_raw(f.getOriginalFilename());
 				Productimage.setI_path(saveDir);
 				Productimage.setI_save(reName);
 
-				Productimage = new Productimage(u_num, orifileName, saveDir, reName);
+				System.out.println(p_name);
 				proMapper.productimg(vo);
 			}
 			
 
 		}
-		return "redirect:/product";
+		return "redirect:/main.do";
 
 	}
+	
+	
 }

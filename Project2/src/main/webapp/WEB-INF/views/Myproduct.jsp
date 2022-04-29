@@ -12,6 +12,7 @@
 <meta http-equiv="Page-Exit" content="blendTrans(Duration=1)" />
 <title>Document</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="stylesheet" href="${cpath}/resources/css/market.css">
 </head>
 <body>
 	<div class="img">

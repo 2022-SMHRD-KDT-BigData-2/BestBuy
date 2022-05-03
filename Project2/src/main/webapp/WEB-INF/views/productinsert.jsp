@@ -50,10 +50,12 @@ $('input[id=i_idx]'),attr('value','1')
 	<div>
 	<form action="${pageContext.request.contextPath}/upload.do" method="post" enctype="multipart/form-data">
 	<label>
-	<input type="text" id="i_idx">
-	<input type="file" name="upload"  ></label>
+	<input type="file" name="upload"></label>
+	<br>
 	<label><input type="file" name="upload" /></label>
-	<input type="hidden"name="p_name" value="${vo.p_name}" />
+	<input type="hidden"name="p_name" value="${vo.p_name}"/>
+	<input type="hidden"name="u_num" value="${vo.u_num}"/>
+	<br>
 	<button type="submit" class="submit">이미지등록</button>
 	</form>
 </div>

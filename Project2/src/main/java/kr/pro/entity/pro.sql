@@ -43,6 +43,7 @@ create table s_info(
 create sequence s_info_idx;
 commit
 create table p_info(
+	p_num number not null,
 	u_num varchar2(500) not null,
 	p_name varchar2(500) not null,
 	p_grade varchar2(5),
@@ -53,14 +54,15 @@ create table p_info(
 	p_weight varchar2(500),
 	p_sweet varchar2(500),
 	p_pack varchar2(500),
-	primary key(p_name),
+	primary key(p_num),
 	foreign key(u_num) references u_info(u_num) 
 );
 create sequence p_info_p_num;
 
 create table i_info(
 	i_num number not null,
-	p_name varchar2(500) not null,
+	p_num number not null,
+	u_num varchar2(500) not null,
 	i_idx varchar2(300),
 	i_raw varchar2(1000),
 	i_path varchar2(3000),
@@ -69,7 +71,8 @@ create table i_info(
 	i_size varchar2(1000),
 	i_grade varchar2(5),
 	primary key(i_num),
-	foreign key(p_name) references p_info(p_name)
+	foreign key(p_num) references p_info(p_num),
+	foreign key(u_num) references u_info(u_num)
 	 );
 create sequence i_info_i_num;
 

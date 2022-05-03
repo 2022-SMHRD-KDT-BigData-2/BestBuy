@@ -17,8 +17,9 @@ public class Product {
 	public Product() {
 	}
 
-	public Product(int p_num, String u_num, String p_name, String p_grade, String p_price, String p_data, String p_option,
-			String p_kind, String p_weight, String p_sweet, String p_pack) {
+
+	public Product(int p_num, String u_num, String p_name, String p_grade, String p_price, String p_data,
+			String p_option, String p_kind, String p_weight, String p_sweet, String p_pack) {
 		super();
 		this.p_num = p_num;
 		this.u_num = u_num;
@@ -32,6 +33,25 @@ public class Product {
 		this.p_sweet = p_sweet;
 		this.p_pack = p_pack;
 	}
+
+
+	public Product(int p_num, String u_num, String p_name, String p_grade, String p_price) {
+		super();
+		this.p_num = p_num;
+		this.u_num = u_num;
+		this.p_name = p_name;
+		this.p_grade = p_grade;
+		this.p_price = p_price;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Product [p_num=" + p_num + ", u_num=" + u_num + ", p_name=" + p_name + ", p_grade=" + p_grade
+				+ ", p_price=" + p_price + ", p_data=" + p_data + ", p_option=" + p_option + ", p_kind=" + p_kind
+				+ ", p_weight=" + p_weight + ", p_sweet=" + p_sweet + ", p_pack=" + p_pack + "]";
+	}
+
 
 	public int getP_num() {
 		return p_num;

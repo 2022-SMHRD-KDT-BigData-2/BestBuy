@@ -66,6 +66,7 @@
 									</c:if>
 									<c:if test="${!empty mvo.u_num}">
 										<li><a href="${pageContext.request.contextPath}/product">물품등록</a></li>
+										<li><a href="${pageContext.request.contextPath}/myproduct.do">내물품확인</a></li>
 									</c:if>
 								</ul>
 							</li>

@@ -51,54 +51,61 @@
 				</div>
 				<form action="${cpath}/product.do" method="post">
 					<div class="p_info">
-						
-							
-							
-								<tr>
+							<tr>
 									<th><span>상품명</span></th>
 									<td><input type="hidden"name="u_num" value="${mvo.u_num}" />
 										<input type="text" name="p_name" placeholder="상품명을 입력해주세요..">
 									</td>
 								</tr>
+								<br>
 								<tr>
 									<th><span>상품등급</span></th>
 									<td><input type="text" name="p_grade" placeholder="상품가격을 입력해주세요."></td>
 								</tr>
+								<br>
 								<tr>
 									<th><span>가격</span></th>
 									<td><input type="text" name="p_price" placeholder="상품가격을 입력해주세요."></td>
 								</tr>
+								<br>
 								<tr>
 									<th><span>판매옵션</span></th>
 									<td><input type="text" name="p_option" placeholder="판매옵션을 입력해주세요."></td>
 								</tr>
+								<br>
 								<tr>						
 									<th><span>안내사항</span></th>
 									<!--높이값 설정이 절대 안되는 중!!!!ㅠㅠ..-->
 									<td>
+								</tr>
+								<br>	
 											<tr>
 												<td>종류</td>
 												<td><input type="text" name="p_kind"></td>
 											</tr>
+											<br>
 											<tr>
 												<td>중량/용량</td>
 												<td><input type="text" name="p_weight"></td>
 											</tr>
+											<br>
 											<tr>
 												<td>당도</td>
 												<td><input type="text" name="p_sweet"></td>
 											</tr>
+											<br>
 											<tr>
 												<td>포장타입</td>
 												<td><input type="text" name="p_pack"></td>
 											</tr>
+											<br>
 											<tr>
 												<td>설명</td>
 												<td><input type="text" name="p_data"></td>
 											</tr>
-										
+									</tr>	
 									</td>
-								</tr>
+								
 								
 					<div class="btn_wrap">
 						<button type="submit" class="submit" name="">상품등록</button>

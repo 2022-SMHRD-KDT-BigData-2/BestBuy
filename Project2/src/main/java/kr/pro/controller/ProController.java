@@ -3,7 +3,7 @@ package kr.pro.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.ui.Model;
 import kr.pro.entity.Productimage;
 import kr.pro.entity.Member;
 import kr.pro.entity.Product;
@@ -48,16 +48,16 @@ public class ProController {
 	@GetMapping("/productinsert")
 	public String productinsert() {
 		return "productinsert";
-	} 
-	
-	@GetMapping("/Market")
-	public String Market() {
-		return "market";
 	}
 
 	@GetMapping("/product")
 	public String product() {
 		return "product";
+	}
+	
+	@GetMapping("/myproduct")
+	public String myproduct() {
+		return "myproduct";
 	}
 
 	// 기능처리
@@ -107,23 +107,32 @@ public class ProController {
 
 	// 물품등록 (상세정보)
 	@RequestMapping("/product.do")
-	public String product(Product vo,HttpServletRequest request) {
-		proMapper.product(vo);
+	public String product(Product vo, HttpServletRequest request, Product pvo) {
+		
+		proMapper.product(vo);	
 		HttpSession session = request.getSession();
 		session.setAttribute("vo", vo);
+		System.out.println(vo.getU_num());
 		return "redirect:/productinsert";
 	}
 
 	@RequestMapping("/upload.do")
-	public String uploadFile(MultipartFile[] upload, HttpServletRequest request, Productimage vo, Productimage Productimage) {
-		String saveDir = "C:\\upload";
-			
+	public String uploadFile(MultipartFile[] upload, HttpServletRequest request, Productimage vo,
+			Productimage Productimage, Product pvo) {	
+		
+		Product vo2 = proMapper.productp_num(pvo);
+		int p_num = vo2.getP_num();
+		String u_num = vo2.getU_num();
+		
+		String saveDir = "C:\\Users\\SM014\\git\\BestBuy\\Project2\\src\\main\\webapp\\resources\\css\\image";
+
 		File dir = new File(saveDir);
 		if (!dir.exists())
 			dir.mkdirs();
 
 		for (MultipartFile f : upload) {
 			if (!f.isEmpty()) {
+				
 				String orifileName = f.getOriginalFilename();
 				String ext = orifileName.substring(orifileName.lastIndexOf("."));
 
@@ -134,23 +143,31 @@ public class ProController {
 
 				try {
 					f.transferTo(new File(saveDir + "/" + reName));
-				} catch (IllegalStateException|IOException e  ) {
+				} catch (IllegalStateException | IOException e) {
 					e.printStackTrace();
 				}
-				String p_name = request.getParameter("p_name");
+
+				Productimage.setU_num(u_num);
+				Productimage.setP_num(p_num);
 				Productimage.setI_raw(f.getOriginalFilename());
 				Productimage.setI_path(saveDir);
 				Productimage.setI_save(reName);
 
-				System.out.println(p_name);
 				proMapper.productimg(vo);
+				HttpSession session = request.getSession();
+				session.setAttribute("vo", vo);
+				System.out.println(vo.getU_num());
 			}
-			
 
 		}
-		return "redirect:/main.do";
+		return "redirect:/myproduct.do";
 
+	}	
+	
+	@RequestMapping("/myproduct.do")
+	public String boardList(Model model) {
+		List<Product> list = proMapper.myproduct();
+		model.addAttribute("mlist", list);
+		return "myproduct";
 	}
-	
-	
 }

@@ -2,7 +2,9 @@ package kr.pro.entity;
 
 //i_info(이미지)
 public class Productimage {
-	private String p_name;
+	private int p_num;
+	private int i_num;
+	private String u_num;
 	private String i_idx;
 	private String i_raw;
 	private String i_path;
@@ -14,12 +16,28 @@ public class Productimage {
 	public Productimage() {
 	}
 
-	public String getP_name() {
-		return p_name;
+	public int getP_num() {
+		return p_num;
 	}
 
-	public void setP_name(String p_name) {
-		this.p_name = p_name;
+	public void setP_num(int p_num) {
+		this.p_num = p_num;
+	}
+
+	public int getI_num() {
+		return i_num;
+	}
+
+	public void setI_num(int i_num) {
+		this.i_num = i_num;
+	}
+
+	public String getU_num() {
+		return u_num;
+	}
+
+	public void setU_num(String u_num) {
+		this.u_num = u_num;
 	}
 
 	public String getI_idx() {
@@ -80,11 +98,9 @@ public class Productimage {
 
 	@Override
 	public String toString() {
-		return "Productimage [p_name=" + p_name + ", i_idx=" + i_idx + ", i_raw=" + i_raw + ", i_path=" + i_path
-				+ ", i_save=" + i_save + ", i_extension=" + i_extension + ", i_size=" + i_size + ", i_grade=" + i_grade
-				+ "]";
+		return "Productimage [p_num=" + p_num + ", i_num=" + i_num + ", u_num=" + u_num + ", i_idx=" + i_idx
+				+ ", i_raw=" + i_raw + ", i_path=" + i_path + ", i_save=" + i_save + ", i_extension=" + i_extension
+				+ ", i_size=" + i_size + ", i_grade=" + i_grade + "]";
 	}
 
-	
-	
 }

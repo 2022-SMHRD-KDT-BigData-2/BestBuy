@@ -74,33 +74,35 @@
 		</div>
 	</div>
 	<!--전체 아이템 리스트 -->
+	<form action="${cpath}/myproduct.do" method="post">
 	<div class="item-cover">
 		<div class="item_List">
 			<ul class="row">
 				<li>
 					<div class="best_item">
-						<h3>내상품목록</h3>
+						<h3>내상품리스트</h3>					
 					</div>
+				
+				<input type="hidden"name="u_num" value="${vo.u_num}"/>
 				</li>
-				<c:forEach var="vo" items="${ list }">
-				<c:url var="contentLink" value="/makertcontent/${vo.p_name}"/>
+				<c:forEach var="vo" items="${ mlist }" varStatus="status">
+				
 				<li class="cell">
+			
 					<div class="img-box">
-						<a href="product.html"><img src="${cpath}/resources/css/ListImage\1.png" alt=""></a>
+						<a href="product.html"></a>
 					</div>
+			
 					<div class="product-name" >${vo.p_num}</div>
-					<div class="product-name" ><a href = "${contentLink}">${vo.p_name}</a></div>
-					<div class="product-price">${vo.p_price}</div>
-					<div class="product-name">${vo.p_kind}</div>
-					<div class="product-name">${vo.p_weight}kg</div>
+					<div class="product-name" >${vo.p_name}</div>
+					
 				</li>
 			</c:forEach>	
-			</ul>
+			
+			</ul>			
 		</div>
 	</div>
-	<div class="footer">
-		<p>주)구매하겠조 남구 송암로 60, 2층</p>
-	</div>
+	</form>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+<%@page import="kr.pro.entity.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -147,21 +148,27 @@
                 </table>
                 </c:forEach>
 		</div>
-	<form action="#" name="form" method="get">
+	<form  action="${cpath}/ShoppingListinsert.do" method="post">
+	<%= (String)session.getAttribute("u_id") %>
                     <div class="init">
                         <div class="my_sum">
                             수량  <input type=hidden name="sell_price" value="6930">
-                            <input type="text" class="count" name="amount" value="1" size="3" onchange="change();"> 
+                            <input type="text" class="count" name="s_amount" value="1" size="3" onchange="change();"> 
                             <input type="button" class="pl-btn" value=" + " onclick="add();">
                             <input type="button" class="mi-btn" value=" - " onclick="del();"><br>
                             <input type="hidden" name="sum" size="11" readonly>
-                            총 상품금액<div id="my_sum"></div></div>
+                            총 상품금액<div id="my_sum"><input type="text" class="count" name="s_price">
+                            <input type="text" class="count" name="s_amount">
+                            <input type="hidden"name="u_id" value="${mvo.u_id}"/>
+                            <input type="hidden"name="p_num" value="${list[0].p_num}"/>
+                            </div></div>
                     </div>
                     <div class="button-area">
-                        <button class="button" type="submit"><a href="${pageContext.request.contextPath}/ShoppingListinsert.do" onclick="alert('장바구니에 상품 담기를 완료했습니다.');">장바구니 담기</a></button>
-                        <button class="button" type="submit"><a href="productBuy.html">구매하기</a></button>
+                        <button class="button" type="submit"><a onclick="alert('장바구니에 상품 담기를 완료했습니다.');">장바구니 담기</a></button>
+                        <button class="button" type="button"><a href="productBuy.html">구매하기</a></button>
                     </div>
-                </form>
+                    </form>
+               
             </div>
         </div>
             <div class="main" name="chooseFile-main">
@@ -205,6 +212,7 @@
         <div class="footer">
             <p>주)구매하겠조 남구 송암로 60, 2층</p>
         </div>
+   
 </body>
 
 

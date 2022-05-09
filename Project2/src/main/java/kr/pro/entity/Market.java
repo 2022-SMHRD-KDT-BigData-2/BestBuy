@@ -3,15 +3,22 @@ package kr.pro.entity;
 public class Market {
 //s_info (장바구니)
 	private int p_num;
-	private String u_num;
+	private String u_id;
 	private String p_name;
 	private int p_grade;
 	private String s_date;
 	private int s_payment;
 	private int s_amount;
 	private String s_price;
-	
-	public Market() {}
+
+	public Market() {
+	}
+
+	@Override
+	public String toString() {
+		return "Market [p_num=" + p_num + ", u_id=" + u_id + ", p_name=" + p_name + ", p_grade=" + p_grade + ", s_date="
+				+ s_date + ", s_payment=" + s_payment + ", s_amount=" + s_amount + ", s_price=" + s_price + "]";
+	}
 
 	public int getP_num() {
 		return p_num;
@@ -21,12 +28,12 @@ public class Market {
 		this.p_num = p_num;
 	}
 
-	public String getU_num() {
-		return u_num;
+	public String getU_id() {
+		return u_id;
 	}
 
-	public void setU_num(String u_num) {
-		this.u_num = u_num;
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
 	}
 
 	public String getP_name() {
@@ -75,13 +82,6 @@ public class Market {
 
 	public void setS_price(String s_price) {
 		this.s_price = s_price;
-	}
-
-	@Override
-	public String toString() {
-		return "Market [p_num=" + p_num + ", u_num=" + u_num + ", p_name=" + p_name + ", p_grade=" + p_grade
-				+ ", s_date=" + s_date + ", s_payment=" + s_payment + ", s_amount=" + s_amount + ", s_price=" + s_price
-				+ "]";
 	}
 
 }

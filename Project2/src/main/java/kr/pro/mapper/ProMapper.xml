@@ -4,8 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.pro.mapper.ProMapper">
 
-	<select id="userLogin" parameterType="kr.pro.entity.Member"
-		resultType="kr.pro.entity.Member">
+	<select id="userLogin" parameterType="kr.pro.entity.Member" resultType="kr.pro.entity.Member">
 		select * from u_info where u_id=#{u_id} and u_pw=#{u_pw}
 	</select>
 
@@ -63,6 +62,9 @@
 	    insert into s_info(s_idx,u_id,p_num,s_amount,s_price)
 	    values (s_info_idx.nextval, #{u_id}, #{p_num},#{s_amount}, #{s_price})
 	</insert>
-	
+
+	<select id="ShoppingList" parameterType="kr.pro.entity.Market">
+	    
+	</select>
 
 </mapper>

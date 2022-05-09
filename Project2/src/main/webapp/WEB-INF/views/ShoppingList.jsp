@@ -11,9 +11,9 @@
     <meta http-equiv="Page-Enter" content="blendTrans(Duration=1)" />
     <meta http-equiv="Page-Exit" content="blendTrans(Duration=1)" />
     <title>Document</title>
-    <link rel="stylesheet" href="${cpath}/product.css">
+    <link rel="stylesheet" href="${cpath}/resources/css/product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <script language="JavaScript">
+    <script type="text/javascript">
         var sell_price;
         var amount;
 
@@ -84,7 +84,7 @@
 							</li>
 						</c:if>
 						<c:if test="${empty mvo}">
-							<li><a onclick="Loginclick()">로그인</a></li>
+							<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
 							<li><a onclick="Joinclick()">회원가입</a></li>
 						</c:if>
 						<c:if test="${!empty mvo}">

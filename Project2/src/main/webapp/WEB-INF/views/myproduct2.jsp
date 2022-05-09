@@ -71,7 +71,7 @@
 							</li>
 						</c:if>
 						<c:if test="${empty mvo}">
-							<li><a onclick="Loginclick()">로그인</a></li>
+							<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
 							<li><a onclick="Joinclick()">회원가입</a></li>
 						</c:if>
 						<c:if test="${!empty mvo}">

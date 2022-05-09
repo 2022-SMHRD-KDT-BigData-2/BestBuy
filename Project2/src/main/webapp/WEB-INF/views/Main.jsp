@@ -19,12 +19,7 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-	function Loginclick() {
-		document.getElementById("login").style.display = 'block';
-	}
-	function Loginclick2() {
-		document.getElementById("login").style.display = 'none';
-	}
+
 	function Joinclick() {
 		document.getElementById("join").style.display = 'block';
 	}
@@ -37,6 +32,7 @@
 	function Updateclick2() {
 		document.getElementById("update2").style.display = 'block';
 	}
+
 </script>
 </head>
 <body>
@@ -73,12 +69,11 @@
 							</li>
 						</c:if>
 						<c:if test="${empty mvo}">
-							<li><a onclick="Loginclick()">로그인</a></li>
+							<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
 							<li><a onclick="Joinclick()">회원가입</a></li>
 						</c:if>
 						<c:if test="${!empty mvo}">
-							<li><a href="${cpath}/logout.do"
-								onclick="alert('로그아웃 하시겠습니까?')">로그아웃</a></li>
+							<li><a href="${cpath}/logout.do" onclick="alert('로그아웃 하시겠습니까?')">로그아웃</a></li>
 						</c:if>
 					</ul>
 				</div>
@@ -104,37 +99,6 @@
 			</div>
 			
 	</div>
-		<!--로그인 페이지 부분-->
-		<div class="login-cover" style="display: none" id="login">
-			<form action="${cpath}/login.do" method="post">
-				<div class="login">
-					<div class="login_top">
-						<h1>FARM & FARM</h1>
-					</div>
-					<div class="login_id">
-						<h3>ID</h3>
-						<input type="text" name="u_id" placeholder="아이디를 입력하세요.">
-					</div>
-					<div class="login_pw">
-						<h3>PW</h3>
-						<input type="password" name="u_pw" placeholder="비밀번호를 입력하세요.">
-					</div>
-					<div class="login_etc">
-						<div class="join">
-							<a onclick="Joinclick()">회원가입</a>
-						</div>
-						<div class="forgot_pw">
-							<a href="${pageContext.request.contextPath}/pwsearch.do">아이디
-								/ 비밀번호 찾기</a>
-						</div>
-					</div>
-					<div class="btn_wrap">
-						<button type="submit" class="submit" name="login">로그인</button>
-						<button type="button" class="submit" onclick="Loginclick2()">돌아가기</button>
-					</div>
-				</div>
-			</form>
-		</div>
 
 		<!--회원가입 페이지 부분-->
 		<div class="login-cover" style="display: none" id="join">
@@ -153,26 +117,16 @@
 								<tbody>
 									<tr>
 										<th><span>아이디</span></th>
-										<td><input type="text" name="u_id"
-											placeholder="아이디를 입력하세요."></td>
-									</tr>
-									<tr>
-										<th><span>비밀번호</span></th>
-										<td><input type="text" name="u_pw"
-											placeholder="비밀번호를 입력해주세요."></td>
+										<td><input type="text" name="u_id" placeholder="아이디를 입력하세요."></td>
 									</tr>
 									<tr>
 										<th><span>닉네임</span></th>
-										<td><input type="text" name="u_nick"
-											placeholder="닉네임을 입력해주세요."></td>
-									</tr>
-
-									<!-- 
-                    <tr>
-                    	<th><span>비밀번호 확인</span></th>
-                    	<td><input type="text" name="pwcheck"placeholder="비밀번호를 확인하세요"></td>
-                    </tr>
-                     -->
+										<td><input type="text" name="u_nick" placeholder="닉네임을 입력해주세요."></td>
+									</tr>									 
+									<tr>
+										<th><span>비밀번호</span></th>
+										<td><input type="text" name="u_pw" id="u_pw" placeholder="비밀번호를 입력해주세요."></td>
+									</tr>                    
 									<tr class="email">
 										<th><span>연락처</span></th>
 										<td><input type="text" name="u_pnum"
@@ -185,7 +139,7 @@
 							</div>
 						</div>
 						<div class="btn_wrap">
-							<button type="submit" class="submit" name="Join">회원가입</button>
+							<button type="submit" class="submit" name="Join" onclick="alert('회원가입 하시겠습니까?')">회원가입</button>
 							<button type="button" class="submit" onclick="Joinclick2()">돌아가기</button>
 						</div>
 					</div>
@@ -202,12 +156,13 @@
 					</div>
 					<div class="login_id">
 						<h3>비밀번호 확인</h3>
-						<input type="hidden" name="u_id" value="${mvo.u_id}" /> <input
-							type="password" name="u_pw" placeholder="비밀번호를 입력하세요.">
+						<input type="text" name="u_id" placeholder="아이디를 입력하세요."> 
+						<br>
+						<input type="password" name="u_pw" placeholder="비밀번호를 입력하세요.">
 					</div>
 					<div class="modify">
-						<button type="submit" class="modify" name="modify"
-							onclick="Updateclick2()">정보수정</button>
+						<button type="submit" class="modify" name="modify" onclick="Updateclick2()">정보수정</button>
+						<button type="button" class="submit" onclick="location.href='javascript:history.back();'">돌아가기</button>
 					</div>
 				</div>
 			</form>
@@ -223,12 +178,12 @@
 						</div>
 						<div class="login_id">
 							<h3>사업자번호 등록</h3>
-							<input type="hidden" name="u_id" value="${mvo.u_id}" /> <input
-								type="text" name="u_num" id="u_num" placeholder="사업자번호를 등록하세요.">
+							<input type="hidden" name="u_id" value="${mvo.u_id}" /> 
+							<input type="text" name="u_num" id="u_num" placeholder="사업자번호를 등록하세요.">
 						</div>
 						<div class="btn_wrap">
-							<button type="submit" class="modify" name=""
-								onclick="alert('사업자번호 등록을 완료하시겠습니까?')">정보수정</button>
+							<button type="submit" class="modify" name="" onclick="alert('사업자번호 등록을 완료하시겠습니까?')">정보수정</button>
+							<button type="button" class="submit" onclick="location.href='javascript:history.back();'">돌아가기</button>
 						</div>
 					</div>
 				</div>

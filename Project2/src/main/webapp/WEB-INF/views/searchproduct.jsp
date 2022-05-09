@@ -46,7 +46,7 @@
 							</li>
 						</c:if>
 						<c:if test="${empty mvo}">
-							<li><a onclick="Loginclick()">로그인</a></li>
+							<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
 							<li><a onclick="Joinclick()">회원가입</a></li>
 						</c:if>
 						<c:if test="${!empty mvo}">
@@ -85,8 +85,8 @@
 				<c:forEach var="vo" items="${ slist }">
 				<c:url var="contentLink" value="/market2.do/${vo.p_num}"/>
 				<li class="cell">
-					<div class="img-box">
-					<img src="${cpath}/resources/css/ListImage\1.png" alt=""></a>
+					<div class="img-box" style = "width : 200px;">
+					<img src="${cpath}/resources/css/image/${vo.i_save}" >
 					</div>
 					<div class="product-name" ><a href = "${contentLink}">${vo.p_num}</a></div>
 					<div class="product-name" >${vo.p_name}</div>

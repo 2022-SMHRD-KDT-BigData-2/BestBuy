@@ -32,7 +32,7 @@ public interface ProMapper {
 	
 	public List<Productimage> myproductimg();
 	
-	public List<Product>searchproduct(Product p_kind);
+	public List<product2>searchproduct(product2 p_kind);
 	
 	public List<product2>myproduct2(int p_num);
 	

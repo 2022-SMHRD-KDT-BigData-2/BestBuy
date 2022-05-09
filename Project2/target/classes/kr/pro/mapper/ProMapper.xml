@@ -19,7 +19,7 @@
 	</update>
 
 	<select id="pwcheck" parameterType="kr.pro.entity.Member" resultType="kr.pro.entity.Member">
-		select * from u_info where u_pw=#{u_pw}
+		select * from u_info where u_id=#{u_id} and u_pw=#{u_pw}
 	</select>
 
 	<insert id="product" parameterType="kr.pro.entity.Product">
@@ -48,8 +48,8 @@
 		where p.p_num = i.p_num and p.p_num = #{p_num}
 	</select>
 
-	<select id="searchproduct" resultType="kr.pro.entity.Product">
-		select * from p_info
+	<select id="searchproduct" resultType="kr.pro.entity.product2">
+		select * from p_info p, i_info i
 		where p_kind like '%'||#{p_kind}||'%'
 	</select>
 	
@@ -65,8 +65,6 @@
 	    values (s_info_idx.nextval, #{u_id}, #{p_num},#{s_amount}, #{s_price})
 	</insert>
 
-	<select id="ShoppingList" parameterType="kr.pro.entity.Market">
-	    
-	</select>
+	
 
 </mapper>

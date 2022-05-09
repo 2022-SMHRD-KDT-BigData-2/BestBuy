@@ -1,0 +1,736 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@font-face {
+    font-family: 'HallymGothic-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+* { 
+font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+}
+/*메인페이지 디자인*/
+html{
+    scroll-behavior: smooth;
+    }
+    body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
+.img{
+    position: relative;
+    background-image: url(./main.jpg);                                                               
+    height: 100vh;
+    background-size: cover;
+}
+.img .content{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);                                                                   
+    font-size:3rem;
+    color: white;
+    z-index: 2;
+    text-align: center;
+}
+
+/*검색창 부분*/
+input.search {
+    border-radius: 10px;
+    padding: 5px;
+    width: 250px;
+}
+i.fas.fa-search{
+    width: 20px;
+    height: 18px;
+}
+.top_background{
+    grid-area: header;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid gray;
+
+}
+.top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.top h1{
+    text-align: center;
+    font-family: "Roboto";
+    font-style:none;
+    font-size:40px;
+    color:#436135;
+    margin-top: 0;
+    padding-left: 150px;
+    padding-top:50px;
+}
+/*메인페이지 메뉴바*/
+#nav {
+    padding: 50px 40px 20px 30px;
+    position: absolute;
+    list-style: none;
+    
+}
+#nav li {
+    float: left;
+    position: relative;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+#nav li a{
+    display: block;
+    font-family: 'HallymGothic-Regular';
+    font-weight:500;
+    font-size:17px;
+    padding-left: 15px;
+    color:#436135;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(128, 128, 128, 0.418);
+}
+#nav li a:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1), inset 0 0 1px rgb(255, 255, 255);
+}
+/*서브메뉴*/
+#nav ul{
+    float:none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top:60px;
+    width: 95px;
+    text-align: center;
+    opacity: 0;
+}
+#nav ul li{
+    float:none;
+    margin:0;
+    padding:0;
+}
+#nav ul li a {
+    font-size:13px;
+}
+#nav li:hover ul{
+    opacity: 1;
+}
+#nav li:hover ul li{
+    height:35px;
+    overflow:visible;
+    padding: 0;
+}
+
+
+
+
+/*상세페이지 이미지/내용 부분 */
+.grid-container{
+    text-align: center;
+    display: grid;
+    grid-template-areas:
+    'left right';
+}
+.item1 { 
+    grid-area: left;
+    text-align: right;
+    width: 85%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.product-image{
+    width:400px;
+    height:500px;
+}
+.item2 { 
+    grid-area: right;
+    text-align: left;
+    width: 80%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.p-title{
+    text-align: left;
+    padding-left: 20px;
+}
+
+/*상세페이지 이미지 부분*/
+.main {
+    text-align: center;
+}
+.main p{
+    font-family: 'HallymGothic-Regular';
+    font-weight: 600;
+    color: rgb(108, 119, 102);
+}
+.main img{
+    border-top: 1px solid rgb(202, 202, 202);
+    width: 50%;
+    padding-top:50px;
+}
+img.product-detail{
+    height: 100%;
+}
+/*상세페이지 안내사항*/
+.pro-intro{
+    border-spacing: 0;
+    margin:0;
+    padding:20px; 
+    border: 0;
+    width:350px;
+    text-align: left;
+}
+/*가격, 장바구니 버튼*/
+.init{
+    padding-top: 30px;
+    font-family: 'HallymGothic-Regular';
+}
+#my_sum{
+    font-size: 25px;
+    font-weight: 600;
+    text-align: right;
+}
+.my_sum{
+    width: 50%;
+    display: inline-block;
+    text-align: right;
+}
+.button{
+    display: block;
+    border: 1.5px solid #436135;
+    font-weight:bold;
+    background-color: white;
+    width: 230px;
+    height: 40px;
+}
+.button a {
+    font-family: 'HallymGothic-Regular';
+    text-decoration: none;
+    color:#436135;
+    font-size: 15px;
+}
+input.pl-btn, input.mi-btn{
+    background-color: white;
+    color:#436135;
+    border: 1.5px solid #436135;
+}
+input.count{
+    position: relative;
+}
+
+/*리뷰*/
+.r-table{
+
+    border-top: 1px solid #43613560;
+    border-bottom: 1px solid #43613560;
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+.review{
+    transform: translate(30%, 10%);    
+    padding-bottom: 5%;       
+}
+
+
+/*사업자 상품등록*/
+.login-cover {
+    animation: fadein 0.8s;
+    -webkit-animation: fadein 0.8s; /* Safari and Chrome */
+    z-index: 1000;
+    position: fixed;
+    width: 100%; height: 100%;
+    left: 0; top: 0;
+    background-color: rgba(0,0,0, 0.4);
+    overflow-x: hidden;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.container{
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);  
+    position: absolute;
+    width: 35%;
+    height: 800px;
+    background: rgb(243, 239, 228);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form_txtInput{
+    width: 80%;
+}
+.join_top{
+    display: flex;
+    text-align: left;
+    font-family: 'HallymGothic-Regular';
+    font-size: 20px;
+    color:rgb(108, 119, 102);
+    border-bottom:1px solid #ececec;
+}
+
+.p_info{
+    width:100%;
+    max-width:700px;
+}
+.p_info table {
+    border-spacing: 0;
+    margin:0;
+    padding:0; 
+    border:0;
+    width:100%;
+}
+.p_info table input{ 
+    border:1px solid #ececec;
+    font-size:13px;
+    color:#4c4c4c; 
+    height:20px;
+    padding:10px; 
+    width:100%; 
+    float:left;
+}
+.p_info table th span{
+    color:rgb(108, 119, 102);
+    font-size:15px; 
+    display:inline-block; 
+    position:relative;
+    padding:0 10px 0 0; 
+    text-indent:20px;
+}
+.p_info table th{
+    text-align:left;
+}
+.p_info table td{
+    padding:6px 0;
+    position: relative;
+}
+.p_info table th span:after{
+    content:'*';
+    font-size:13px;
+    color:#f95427;
+    position:absolute;
+    top:0;
+    right:0px;
+}
+.p-info{
+    width: 100%;
+    height: 250px;
+}
+.footer p{
+    position: absolute;
+    padding: 20px;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'HallymGothic-Regular';
+    font-size:15px;
+    color: rgb(73, 63, 63);
+}
+/*제출 버튼*/
+.btn_wrap{
+    text-align:center;
+    margin:40px 0 30px;
+}
+.submit{
+    background-color: rgb(108, 119, 102);
+    color:rgb(243, 239, 228);
+    font-size: 15px;
+}
+button.submit{
+    width: 100px;
+    height: 40px;
+}
+.button input{
+    font-family: 'HallymGothic-Regular';
+    font-weight:bold;
+    color:#436135;
+    width: 230px;
+    height: 40px;
+    font-size: 10px;
+}
+
+.pro-button-area{
+    padding-left: 150px;
+}
+
+/*상품이미지 등록 Regi2*/
+#file{
+    display: none;
+}
+.upload-center{
+    text-align: center;
+    padding-top: 5%;
+}
+.upload {
+    background-color: rgb(252, 249, 244);
+    border:2px solid #436135;
+    color:#436135;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 10px;
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+}
+.image-preview {
+    width: 650px;
+    height: 300px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    gap: 20px;
+}
+.image-preview tr td {
+    padding :8px;
+    width: 160px;
+    height: 130px;
+}
+img {
+    width: 160px;
+    height: 130px;
+}
+/*장바구니 shoppingcart*/
+.cart-grid-container{
+    text-align: center;
+    display: grid;
+    grid-template-areas:
+    'top top top top'
+    'left left right right';
+}
+.grid-top{
+    grid-area: top;
+    padding:20px 0 20px 0;
+}
+.grid-top h2{
+    font-family: 'HallymGothic-Regular';
+    color: #2f382a;
+
+}
+.grid-left{
+    grid-area: left;
+    text-align: right;
+    padding: 50px 0 50px 40%;
+}
+
+.grid-left table{
+    border-top:1px solid #e3e6e3;
+    border-bottom:1px solid #e3e6e3;
+    padding:30px;
+}
+.grid-right{
+    grid-area: right;
+    padding:50px 0 0 20px;
+}
+.address, .cart-price{
+    background-color: #f5f8f4;
+    width: 300px;
+    padding : 20px;
+    text-align: left;
+    font-family: 'HallymGothic-Regular';
+    color: #2f382a;
+}
+input#check{
+    display:none;
+}
+input#check + label{
+    cursor:pointer;
+}
+input#check + label:before{
+    content:"";
+    display:inline-block;
+    width:17px;
+    height:17px;
+    line-height:17px;
+    border:1px solid #cbcbcb;
+    vertical-align:middle;/*체크 전과 체크 후 높이 차이 때문에 설정*/
+}
+
+input#check + label:after {
+    display:block; 
+    clear:both; 
+    content:"";
+}
+    
+/*checked된 input 바로 다음의 label:before 에 체크 후 CSS 설정*/  
+input#check :checked + label:before{
+    font-weight:900;/*폰트어썸 설정*/
+    color:#fff;
+    background-color:#000;
+    border-color:#000;
+    font-size:13px;
+    text-align:center;
+}
+
+.i_name a{
+    text-decoration: none;
+    color: #2f382a;
+    text-align: left;
+    padding-left: 10px;
+}
+.add-top, .add-content{
+    font-family: 'HallymGothic-Regular';
+    color: #2f382a;
+}
+.add-button{
+    display: block;
+    border: 1.5px solid #436135;
+    font-weight:bold;
+    background-color: white;
+    width: 230px;
+    height: 40px;
+}
+.add-button a {
+    font-family: 'HallymGothic-Regular';
+    text-decoration: none;
+    color:#436135;
+    font-size: 15px;
+}
+.total-bottom{
+    padding-top:20px;
+    font-size: 11px;
+}
+.cart-price{
+    height: 100px;
+}
+.total{
+    font-family: 'HallymGothic-Regular';
+    color: #2f382a;
+    font-weight: 600;
+}
+.button-area{
+    padding-top:20px;
+    margin: 0;
+}
+.cart-footer{
+    padding:8% 0 20px 0;
+}
+.cart-footer p{
+    position: absolute;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'HallymGothic-Regular';
+    font-size:15px;
+    color: rgb(73, 63, 63);
+}
+/* productBuy 주문서 */
+.sideBanner{
+    position: absolute;
+    
+}
+.txt-label img{
+    transform: translate(90%);
+    position: absolute;
+    width: 100px;
+    height: 320px;
+}
+.buy_top{
+    padding-top:20px;
+    text-align: center;
+}
+.buy_top h2{
+    font-family: 'HallymGothic-Regular';
+    color:#436135;
+}
+.button-area2{
+    transform: translate(44%, 50%); 
+}
+.buy-button{
+    display: block;
+    border: 1.5px solid #436135;
+    font-weight:bold;
+    background-color: white;
+    width: 230px;
+    height: 40px;
+    font-family: 'HallymGothic-Regular';
+    color:#436135;
+    font-size: 15px;
+}
+.buy-button a{
+    text-decoration: none;
+    font-family: 'HallymGothic-Regular';
+    color:#436135;
+    font-size: 15px;
+}
+.buy-main{
+    display: flex;
+    justify-content: center;
+    
+}
+.buy-form{
+    text-align: center;
+    list-style: none;
+}
+.buy-form li{
+    width: 100vh;
+    padding-top: 40px;
+}
+.buy-form li th{
+    text-align: left;
+}
+.buy-form li table{
+    width: 100vh;
+    border-top: 1px solid rgb(231, 233, 230);
+}
+.i_name2{
+    padding-top: 20px;
+    text-align: left;
+}
+.i_name2 a{
+    text-decoration: none;
+    color:#2f382a;
+    font-family: 'HallymGothic-Regular';
+}
+.i_image{
+    text-align: left;
+}
+.i_tr th{
+    font-family: 'HallymGothic-Regular';
+    font-size: 20px;
+    color:#2f382a;
+    padding: 20px 0 20px 0;
+}
+.i_td{
+    text-align: left;
+    padding-top: 20px;
+}
+.i_td input{
+    width: 300px;
+    height: 40px;
+    border: 1px solid gainsboro
+}
+.i_td2{
+    text-align: left;
+}
+.i_td2 img{
+    padding-top:20px;
+    width: 395px;
+    height: 45px;
+}
+.pay-button{
+    float: left;
+}
+.pay-button button{
+    font-family: 'HallymGothic-Regular';
+    color:#2f382a;
+    border: 1px solid gainsboro;
+    background-color: #fff;
+    padding: 15px 42px 15px 42px;
+}
+/*구매후기*/
+/*별점*/
+.star-rating {
+    display:flex;
+    flex-direction: row-reverse;
+    font-size:1.5em;
+    justify-content:space-around;
+    padding:0 .2em;
+    text-align:center;
+    width:5em;
+}
+.star-rating input {
+    display:none;
+}
+.star-rating label {
+    color:#ccc;
+    cursor:pointer;
+}
+.star-rating :checked ~ label {
+    color:#f90;
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color:#fc0;
+}
+.rv-cover{
+    animation: fadein 0.8s;
+    -webkit-animation: fadein 0.8s; /* Safari and Chrome */
+    z-index: 1000;
+    position: fixed;
+    width: 100%; height: 100%;
+    left: 0; top: 0;
+    background-color: rgba(0,0,0, 0.4);
+    overflow-x: hidden;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.rv-container{
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);  
+    position: absolute;
+    width: 600px;
+    height: 800px;
+    background: rgb(243, 239, 228);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.rv-form{
+    width:100%;
+    max-width:668px;
+}
+.rv-top h3{
+    font-family: 'HallymGothic-Regular';
+    color: #314628;
+    font-size: 25px;
+    padding: 0 0 25px 30px;
+}
+.rv-write{
+    width: 800px;
+}
+.rv-write tr td {
+    padding-bottom: 18px;
+}
+.rv-write tr td span{
+    font-family: 'HallymGothic-Regular';
+    color: #314628;
+    padding-left: 45px;
+}
+textarea{
+    width: 300px;
+}
+.rv-image-preview{
+    list-style: none;
+    width: 100px;
+    height: 00px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    gap: 20px;
+}
+.rv-file{
+    background-color: rgb(252, 249, 244);
+    border:2px solid #436135;
+    width: 280px;
+    padding:10px;
+    height: 30px;
+}

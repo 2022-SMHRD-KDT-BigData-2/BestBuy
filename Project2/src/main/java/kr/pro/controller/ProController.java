@@ -44,7 +44,7 @@ public class ProController {
 
 	@GetMapping("/login")
 	public String login() {
-		return "Login";
+		return "login";
 	}
 
 	@GetMapping("/updateMember")
@@ -168,9 +168,9 @@ public class ProController {
 	}
 
 	@RequestMapping("/searchproduct.do")
-	public String searchproduct(Model model, Product p_kind) {
-		List<Product> slist = proMapper.searchproduct(p_kind);
-		model.addAttribute("slist", slist);
+	public String searchproduct(Model model, product2 p_kind) {
+		List<product2> slist = proMapper.searchproduct(p_kind);
+		model.addAttribute("slist", Deduplication_List(slist));
 		return "searchproduct";
 	}
 
@@ -185,7 +185,6 @@ public class ProController {
 	@RequestMapping("/myproduct2.do/{p_num}")
 	public String myproduct2(@PathVariable("p_num") int p_num, Model model) {
 		List<product2> list = proMapper.myproduct2(p_num);
-		System.out.println(list.get(0));
 		model.addAttribute("list", list);
 		return "myproduct2";
 	}

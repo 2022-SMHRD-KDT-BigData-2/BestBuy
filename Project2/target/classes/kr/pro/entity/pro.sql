@@ -89,3 +89,6 @@ create sequence r_info_r_num;
 
 insert into i_info(i_num,i_path)
 values(i_info_i_num.nextval, '/resources/css/ListImage/4.png');
+
+select * from p_info p,i_info i
+	    where p.p_num=63;

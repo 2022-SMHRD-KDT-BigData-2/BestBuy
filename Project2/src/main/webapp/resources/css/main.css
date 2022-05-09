@@ -153,7 +153,7 @@ i.fas.fa-search{
         font-size:14px;
         padding-left: 0;
 }
-
+}
 /*로그인 커버*/
 .login-cover {
     animation: fadein 0.8s;
@@ -251,7 +251,7 @@ i.fas.fa-search{
     .login {
         width: 500px;
 }
-
+}
 /*모든 버튼 통일 디자인*/
 .submit{
     background-color: rgb(108, 119, 102);

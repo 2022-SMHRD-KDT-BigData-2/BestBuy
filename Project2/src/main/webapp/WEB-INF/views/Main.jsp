@@ -128,7 +128,7 @@
 								/ 비밀번호 찾기</a>
 						</div>
 					</div>
-					<div class="submit">
+					<div class="btn_wrap">
 						<button type="submit" class="submit" name="login">로그인</button>
 						<button type="button" class="submit" onclick="Loginclick2()">돌아가기</button>
 					</div>

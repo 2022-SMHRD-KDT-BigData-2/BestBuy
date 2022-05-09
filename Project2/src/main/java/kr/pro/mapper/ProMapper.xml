@@ -54,8 +54,10 @@
 	</select>
 	
 	<select id="market" resultType="kr.pro.entity.product2">
-	    select * from p_info p,i_info i
+	   	select p.p_name, p.p_num,p.p_price, i.i_num, i.i_save
+		from p_info p, i_info i
 	    where p.p_num=i.p_num
+	    order by p.p_num
 	</select>
 	
 	<insert id ="ShoppingListinsert" parameterType="kr.pro.entity.Market">

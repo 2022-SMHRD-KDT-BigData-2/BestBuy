@@ -134,7 +134,7 @@ public class ProController {
 		Product vo2 = proMapper.productp_num(pvo);
 		int p_num = vo2.getP_num();
 		String u_num = vo2.getU_num();
-		String saveDir = "C:\\Users\\SM014\\git\\BestBuy\\Project2\\src\\main\\webapp\\resources\\css\\image";
+		String saveDir = "C:\\Users\\SM014\\git\\BestBuy\\Project2\\src\\main\\webapp\\resources\\image";
 		File dir = new File(saveDir);
 
 		if (!dir.exists())

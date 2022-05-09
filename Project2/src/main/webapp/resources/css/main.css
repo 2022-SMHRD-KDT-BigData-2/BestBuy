@@ -7,6 +7,11 @@
 }
 
 /*메인페이지 디자인*/
+html{
+    scroll-behavior: smooth;
+    }
+    body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
+
 .img{
     position: relative;
     background-image: url(./main.jpg);                                                               
@@ -19,9 +24,21 @@
     left:50%;
     transform: translate(-50%, -50%);                                                                   
     font-size:3rem;
-    color: white;
+    color: rgb(108, 119, 102);
     z-index: 2;
     text-align: center;
+
+}
+.img .content h3{
+    margin-bottom: 0;
+}
+.img .content p{
+    font-family: 'HallymGothic-Regular';
+    position: absolute;                                                    
+    font-size:15px;
+    color: rgb(108, 119, 102);
+    z-index: 2;
+    padding-left: 13%;
 }
 /* 메인페이지 로고,메뉴바 grid로 나누기*/
 .top {
@@ -33,14 +50,14 @@
     font-family: "Roboto";
     font-style:none;
     font-size:40px;
-    color: rgba(255, 255, 255, 0.938);
+    color: rgb(108, 119, 102);
     margin-top: 0;
-    padding-left: 30px;
+    padding-left: 150px;
     padding-top:50px;
 }
 /*메인페이지 메뉴바*/
 #nav {
-    padding: 50px 60px 20px 10px;
+    padding: 50px 40px 20px 30px;
     position: absolute;
     list-style: none;
     
@@ -55,15 +72,16 @@
     display: block;
     font-family: 'HallymGothic-Regular';
     font-weight:500;
-    font-size:20px;
-    color : white;
+    font-size:17px;
+    padding-left: 15px;
+    color : rgb(108, 119, 102);
     text-decoration: none;
     text-shadow: 0 1px 1px rgba(128, 128, 128, 0.418);
 }
 #nav li a:hover {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1), inset 0 0 1px rgb(255, 255, 255);
     background: rgba(255, 255, 255, 0.1);
-    color: rgb(243, 253, 207);
+    color: rgb(180, 189, 150);
 }
 /*서브메뉴*/
 #nav ul{
@@ -93,7 +111,11 @@
     overflow:visible;
     padding: 0;
 }
+
 /*검색창 부분*/
+.input-group{
+    padding-top: 30px;
+}
 input.search {
     border-radius: 10px;
     padding: 5px;
@@ -112,6 +134,24 @@ i.fas.fa-search{
     font-family: 'HallymGothic-Regular';
     font-size:15px;
     color: white;
+}
+/*메인페이지 반응형*/
+@media screen and (max-width: 768px){
+    /*top - grid*/
+    .top h1{
+        text-align: left;
+        font-size:30px;
+        padding-left: 50px;
+    }
+    #nav {
+        padding: 45px 10px 20px 10px;
+    }
+    #nav li {
+        padding-right: 15px;
+    }
+    #nav li a{
+        font-size:14px;
+        padding-left: 0;
 }
 
 /*로그인 커버*/
@@ -206,6 +246,12 @@ i.fas.fa-search{
     color: rgb(108, 119, 102);
     font-size:14px;
 }
+/*로그인 반응형*/
+@media screen and (max-width: 768px){
+    .login {
+        width: 500px;
+}
+
 /*모든 버튼 통일 디자인*/
 .submit{
     background-color: rgb(108, 119, 102);
@@ -216,6 +262,15 @@ button.submit{
     width: 100px;
     height: 40px;
 }
+.button input{
+    font-family: 'HallymGothic-Regular';
+    font-weight:bold;
+    color:#436135;
+    width: 230px;
+    height: 40px;
+    font-size: 10px;
+}
+
 
 /*회원가입 폼*/
 .form_txtInput{
@@ -272,10 +327,7 @@ button.submit{
     width:100%; 
     float:left;
 }
-.join_form table input.email{
-    width:162px; 
-    display: inline-block;
-}
+
 .join_form table th span{
     color:rgb(108, 119, 102);
     font-size:14px; 
@@ -338,6 +390,7 @@ button.modify:hover {
     width: 100px;
     height: 40px;
 }
-
-
-
+@media screen and (max-width: 768px){
+    .container{
+        width: 530px;
+}

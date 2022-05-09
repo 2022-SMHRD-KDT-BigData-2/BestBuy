@@ -12,12 +12,11 @@
 <meta http-equiv="Page-Exit" content="blendTrans(Duration=1)" />
 <title>Document</title>
 <link rel="stylesheet" href="${cpath}/resources/css/market.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="stylesheet" href="${cpath}/lib/w3.css">
 </head>
 <body>
 	<div class="top_background">
-		<!-- 상단 메뉴바 -->
 		<!-- 상단 메뉴바 -->
 			<div class="top">
 				<h1>FARM & FARM</h1>
@@ -62,7 +61,7 @@
                     <div class="top_intro">
                         <div class="intro">FARM&FARM은</div>
                         <div class="intro2">삶의 바탕이 되는 자연과 환경을<br>소중하게 생각합니다.</div>
-                        <div class="intro3"><img src="${cpath}/ListImage/선요소.png"></div>
+                        <div class="intro3"><img src="${cpath}/resources/css/ListImage/선요소.png"></div>
                     </div>
                     <div class="container">
                         <ul id="slider">
@@ -127,14 +126,13 @@
         <div class="item_List">
             <div class="best_item">
                 <div class="pro-order">
-                    추천순　신상품순　판매량순　낮은가격순　높은가격순
                 </div>
             </div>
             <ul class="row">             
                 <c:forEach var="vo" items="${ market_list }">
 				<c:url var="contentLink" value="/market2.do/${vo.p_num}"/>
 				 <li class="cell">
-                    <div class="img-box"><img src="${cpath}/ListImage/1.png" alt=""></div>
+                    <div class="img-box" style = "width : 200px;" ><img src="${cpath}/resources/css/image/${vo.i_save}" ></div>
                     <div class="product-name"><a href = "${contentLink}">${vo.p_name}</a></div>                 
                     <div class="product-price">${vo.p_price}</div>
                 </li>
@@ -146,6 +144,4 @@
             <p>주)구매하겠조 남구 송암로 60, 2층</p>
         </div>
 </body>
-</body>
-
 </html>

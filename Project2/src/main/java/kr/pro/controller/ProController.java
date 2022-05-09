@@ -204,7 +204,7 @@ public class ProController {
 	@RequestMapping("/Market")
 	public String market(Model model) {
 		List<product2> list = proMapper.market();
-		model.addAttribute("market_list", Deduplication_List(list));
+		model.addAttribute("market_list", Deduplication_List(list));				
 		return "market";
 	}
 	

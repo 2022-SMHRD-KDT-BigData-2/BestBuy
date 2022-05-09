@@ -104,11 +104,10 @@
              </c:forEach>
             </div>
             
-            <div class="item2">               
-				<c:forEach var="vo" items="${ list }" varStatus="status" end="0">
+            <div class="item2">
 				<div class="p-title">
-                <h2 name="p_name">${vo.p_name}</h2>
-                <h2 name="p_price">${vo.p_price}</h2>
+                <h2 name="p_name">${list[0].p_name}</h2>
+                <h2 name="p_price">${list[0].p_price}</h2>
                 </div>
                 <table class="pro-intro" >
                     <colgroup>
@@ -118,35 +117,34 @@
                     <tbody>
                         <tr>
                             <td>종류</td>
-                            <td name="p_kind">${vo.p_kind}</td>
+                            <td name="p_kind">${list[0].p_kind}</td>
                         </tr>
                         <tr>
                             <td>중량/용량</td>
-                            <td name="p_weight">${vo.p_weight}</td>
+                            <td name="p_weight">${list[0].p_weight}</td>
                         </tr>
                         <tr>
                             <td>상품등급</td>
-                            <td name="p_grade">${vo.p_grade}</td>
+                            <td name="p_grade">${list[0].p_grade}</td>
                         </tr>
                         <tr>
                             <td>당도</td>
-                            <td name="p_sweet">${vo.p_sweet}</td>
+                            <td name="p_sweet">${list[0].p_sweet}</td>
                         </tr>
                         <tr>
                             <td>포장타입</td>
-                            <td name="p_pack">${vo.p_pack}</td>
+                            <td name="p_pack">${list[0].p_pack}</td>
                         </tr>
                         <tr>
                             <td>안내사항</td>
                             <td>
                                 <p>
-                                ${vo.p_data}
+                                ${list[0].p_data}
                                 </p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                </c:forEach>
 		</div>
 	<form  action="${cpath}/ShoppingListinsert.do" method="post">
 	<%= (String)session.getAttribute("u_id") %>
@@ -206,7 +204,7 @@
                     </table>
                 </div>
                 <p>상세정보</p>
-                <img src="${cpath}\ListImage\9.png" class="product-detail">
+                <img src="${cpath}/resources/css/ListImage\9.png" class="product-detail">
             </div> 
         </div>
         <div class="footer">

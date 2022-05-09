@@ -1,360 +1,544 @@
-@import
-	url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap')
-	;
-
-@import
-	url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css')
-	;
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 @font-face {
-	font-family: 'HallymGothic-Regular';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2')
-		format('woff2');
-	font-weight: 400;
-	font-style: normal;
+    font-family: 'HallymGothic-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+* { 
+font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
 }
 
-* {
-	font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-		Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
-		'Noto Sans KR', 'Malgun Gothic', sans-serif;
-}
+html{
+    scroll-behavior: smooth;
+    }
+    body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
 
-.top_background {
-	background: rgb(243, 239, 228);
+.top_background{
+    background: rgb(243, 239, 228);
 }
-
 .top {
-	display: grid;
-	grid-template-columns: 1fr 2fr;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }
-
-.top h1 {
-	text-align: center;
-	font-family: "Roboto";
-	font-style: none;
-	font-size: 40px;
-	color: #436135;
-	margin-top: 0;
-	padding-left: 150px;
-	padding-top: 50px;
+.top h1{
+    text-align: center;
+    font-family: "Roboto";
+    font-style:none;
+    font-size:40px;
+    color:#436135;
+    margin-top: 0;
+    padding-left: 150px;
+    padding-top:50px;
 }
 /*메인페이지 메뉴바*/
 #nav {
-	padding: 50px 40px 20px 30px;
-	position: absolute;
-	list-style: none;
+    padding: 50px 40px 20px 30px;
+    position: absolute;
+    list-style: none;
+    
 }
-
 #nav li {
-	float: left;
-	position: relative;
-	padding-left: 25px;
-	padding-right: 25px;
+    float: left;
+    position: relative;
+    padding-left: 25px;
+    padding-right: 25px;
 }
-
-#nav li a {
-	display: block;
-	font-family: 'HallymGothic-Regular';
-	font-weight: 500;
-	font-size: 17px;
-	padding-left: 15px;
-	color: #436135;
-	text-decoration: none;
-	text-shadow: 0 1px 1px rgba(128, 128, 128, 0.418);
+#nav li a{
+    display: block;
+    font-family: 'HallymGothic-Regular';
+    font-weight:500;
+    font-size:17px;
+    padding-left: 15px;
+    color:#436135;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(128, 128, 128, 0.418);
 }
-
 #nav li a:hover {
-	box-shadow: 0 0 10px rgba(255, 255, 255, 0.1), inset 0 0 1px
-		rgb(255, 255, 255);
-	background:
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1), inset 0 0 1px rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgb(180, 189, 150);
 }
 /*서브메뉴*/
-#nav ul {
-	float: none;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	top: 60px;
-	width: 95px;
-	text-align: center;
-	opacity: 0;
+#nav ul{
+    float:none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top:60px;
+    width: 95px;
+    text-align: center;
+    opacity: 0;
 }
-
-#nav ul li {
-	float: none;
-	margin: 0;
-	padding: 0;
+#nav ul li{
+    float:none;
+    margin:0;
+    padding:0;
 }
-
 #nav ul li a {
-	font-size: 13px;
+    font-size:13px;
+}
+#nav li:hover ul{
+    opacity: 1;
+}
+#nav li:hover ul li{
+    height:35px;
+    overflow:visible;
+    padding: 0;
 }
 
-#nav li:hover ul {
-	opacity: 1;
+
+@media screen and (max-width: 768px){
+    /*top - grid*/
+    .top h1{
+        text-align: left;
+        font-size:30px;
+        padding-left: 50px;
+    }
+    #nav {
+        padding: 45px 10px 20px 10px;
+    }
+    #nav li {
+        padding-right: 15px;
+    }
+    #nav li a{
+        font-size:14px;
+        padding-left: 0;
+}
 }
 
-#nav li:hover ul li {
-	height: 35px;
-	overflow: visible;
-	padding: 0;
-}
 
 /*intro 글씨 부분*/
-.top_intro {
-	float: left;
-	width: 45%;
-	padding-right: 50px;
+.top_intro{
+    float: left;
+    width: 45%;
+    padding-right: 50px;
 }
-
-.intro {
-	font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-		Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
-		'Noto Sans KR', 'Malgun Gothic', sans-serif;
-	color: #436135;
-	font-size: 40px;
-	font-weight: 200;
+.intro{
+    font-family: Pretendard, -apple-system, 
+    BlinkMacSystemFont, system-ui, Roboto, 
+    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 
+    'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    color:#436135;
+    font-size: 40px;
+    font-weight: 200;
+    z-index: 3;
 }
-
-.intro2 {
-	font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-		Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
-		'Noto Sans KR', 'Malgun Gothic', sans-serif;
-	color: #436135;
-	font-size: 40px;
-	font-weight: 700;
+.intro2{
+    font-family: Pretendard, -apple-system, 
+    BlinkMacSystemFont, system-ui, Roboto, 
+    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 
+    'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    color:#436135;
+    font-size: 40px;
+    font-weight: 700;
+    z-index: 3;
 }
-
-.intro3 {
-	padding-top: 15%;
+.intro3{
+    padding-top: 15%;
 }
 
 /*intro 이미지 슬라이드 */
-.wrapper {
-	display: flex;
-	justify-content: right;
-	padding-right: 17%;
-	padding-top: 2%;
-	align-items: center;
+.wrapper{
+    display: flex;
+    justify-content:right;
+    padding-right: 17%;
+    padding-top:2%;
+    padding-bottom: 100px;
+    align-items: center;
 }
+.container{
+    width: 550px;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+.mySlides{
+    width: 550px;
+    height: 450px;
+}
+@media screen and (max-width: 768px){
+    .wrapper{
+        padding-right: 50px;
+    }
+    .top_intro{
+        padding: 0 0px 0 80px;
+        width: 450px;
+    }
+    .intro{
+        font-size: 30px;
+    }
+    .intro2{
+        font-size: 30px;
+    }
+    .container{
+        width: 390px;
+}
+}
+/* 추천상품 */ /**/
+.best_item{
+    left:50%;
+}
+.best-item{
+    background-color: white;
+    left: 30%;
+}
+.top_best{
+    padding-top:5%;
+    padding-bottom: 5%;
+    text-align: center;
+    display: block;
+    clear: both;
+    background-color: white;
+}
+.top_best li{
+    list-style-type: none;
+    display: inline-block;
+}
+.img {
+    width: 300px;
+}
+.best_item h3{
+    line-height: 1.2;
+    color:#273520;
+    font-family: 'HallymGothic-Regular';
+    padding-left: 15%;
+    padding-top:50px;
+}
+.item-button{
+    text-align: center;
 
-.container {
-	width: 550px;
-	height: 460px;
-	position: relative;
-	overflow: hidden;
-	margin-bottom: 50px;
 }
-
-/*slider css 안먹히는 부분*/
-#slider {
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: flex;
-	-webkit-animation: slide 0.5s forwards;
-	-webkit-animation-delay: 2s;
-	animation: slide 0.5s forwards;
-	animation-delay: 2s;
-}
-
-@
--webkit-keyframes slider { 100% {
-	left: 0;
-}
-
-}
-@
-keyframes slider { 100% {
-	left: 0;
-}
-
-}
-
-/* 추천상품 */
-.top_best {
-	display: block;
-	clear: both;
-	background-color: white;
-}
-
-.best-cell {
-	flex: 1;
-}
-
-.best_item h3 {
-	font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-		Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
-		'Noto Sans KR', 'Malgun Gothic', sans-serif;
-	padding-left: 13%;
-}
-
 .button {
-	font-family: 'HallymGothic-Regular';
-	color: rgb(131, 131, 131);
-	background-color: white;
-	border-radius: 20px;
-	border-color: rgb(219, 219, 219);
-	padding: 5px 15px;
-	transition-duration: 0.3s;
+    font-family: 'HallymGothic-Regular';
+    color: rgb(131, 131, 131);
+    background-color: white;
+    border-radius: 20px;
+    border-color: rgb(219, 219, 219);
+    padding: 5px 15px;
+    transition-duration: 0.3s;
 }
-
 .button:hover {
-	background-color: #2b2b2b;
-	color: white;
+    background-color: #2b2b2b;
+    color: white;
+}
+@media screen and (max-width: 768px){
+    .top_best li {
+        padding:0;
+    }
+    .top_best li img{
+        width: 250px;
+    }
+    .product-name{
+        font-size: 15px;
+    }
+    .product-price{
+        font-size:15px;
+    }
 }
 
 /*상품 리스트*/
-ul, li {
-	list-style: none;
-	padding: 15px;
-	margin: 0;
+ul,li {
+    list-style: none;
+    padding: 15px;
+    margin: 0;
 }
 
-.item-cover {
-	background-color: rgb(247, 244, 239);
+.item_List{
+    background-color:rgb(247, 244, 239);
+    padding-top:50px;
+    width: 100%;
+    margin: 0;
+}
+.pro-order{
+    font-size: 13px;
+    font-family: 'HallymGothic-Regular';
+    color:#273520;
+    text-align: right;
+    padding-right: 10%;
+}
+.row{
+    background-color:rgb(247, 244, 239);
+    text-align: center;
+}
+.cell{
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 20px;
 }
 
-.item_List {
-	background-color: rgb(247, 244, 239);
-	width: 100%;
-	margin: 0;
+.item_List > ul > li > .product-name {
+    text-align: left;
+    font-weight: 500;
+}
+.item_List > ul > li:hover > .product-name {
+    text-decoration: underline;
+}
+.item_List > ul > li > .product-price {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.5rem;
+} 
+.item_List > ul > li > .product-price::after {
+    content: "원";
+    font-size: 1rem;
+    font-weight:normal;
+}
+.footer p{
+    text-align: center;
+    font-family: 'HallymGothic-Regular';
+    color: #63564c;
+}
+@media screen and (max-width: 768px){
+    .cell{
+        padding: 5px;
+    }
+    .cell img{
+        width: 200px;
+    }
+    .item_List > ul > li > .product-price {
+        text-align: left;
+        font-size: 15px;
+    } 
 }
 
-.row::after {
-	content: "";
-	display: block;
-	clear: both;
+/**/
+
+
+/*company list*/
+
+@font-face {
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2479807/neuzeit.woff2') format('woff2');
+    font-family: 'Neuzeit';
+}
+.bottom {
+    max-width: 100%;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    overflow-x: hidden;
+}
+body {
+    font-family: 'Neuzeit', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+.hero {
+    background-color: rgb(243, 239, 228);
+    z-index: 0;
+    position: relative;
+}
+.leaf{
+    position: absolute;
+    opacity: 0.4;
+    padding-left: 76%;
 }
 
-.cell {
-	float: left;
-	box-sizing: border-box;
-	padding: 20px;
+.hero__background {
+    position: absolute;
+    top: 0%;
+    height: 0%;
+    width: 100%;
+    background: rgb(243, 239, 228);
+}  
+.hero__top {
+    z-index: -3;
+    position: relative;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+h1 {
+    color: #436135;
+    font-size: 80px;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 600px;
+    z-index: 3;
+    position: relative;
 }
 
-.img-box>img {
-	display: block;
-	width: 100%;
+
+.bottom {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.about {
+    background-color: #fff;
 }
 
-.item_List>ul>li>.product-name {
-	text-align: left;
-	font-weight: 500;
+.about__item {
+    display: inline-block;
+    width: 600px;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+}    
+
+.bottom {
+    margin-bottom: 64px;
+    object-fit: cover;
+    height: 500px;
+    width: 500px;
+    flex: 1;
 }
 
-.item_List>ul>li:hover>.product-name {
-	text-decoration: underline;
+.about:nth-child(even) {
+    flex-direction: column-reverse;
 }
 
-.item_List>ul>li>.product-price {
-	text-align: left;
-	font-weight: bold;
-	font-size: 1.5rem;
+.content {
+    height: 50%;
+    max-width: 500px;
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
-.item_List>ul>li>.product-price::after {
-	content: "원";
-	font-size: 1rem;
-	font-weight: normal;
+h3 {
+    line-height: 1.2;
+    color:#273520;
+    font-family: 'HallymGothic-Regular';
+    padding-left: 15%;
+    padding-top:20px;
+}
+p {
+    color: rgba(0,0,0,.6);
+    max-width: 350px;
+    margin-top: 8px;
 }
 
-.footer p {
-	text-align: center;
-	font-family: 'HallymGothic-Regular';
-	color: #63564c;
+.horizontal-scroll__section {
+    position: relative;
+    height: 350vh;
 }
-/*사업자 상품등록*/
-.p_info {
-	width: 100%;
-	max-width: 700px;
+textarea{
+    width: 300px;
 }
 
-.p_info table {
-	border-spacing: 0;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	width: 100%;
+
+
+
+/**/
+.scroll__section{
+    scroll-behavior: smooth;
+    background-color: #fff;
+}
+.horizontal-scroll__wrapper {
+    width: 100vh;
+    height: 100vw;
+    transform: rotate(-90deg);
+    transform-origin: top left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    transform: rotate(-90deg) translateX(-100vh);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+    
+.horizontal-scroll__content {
+    background-color: #fff;
+    scrollbar-width: none;
+   display: flex;
+    flex-direction: row;
+    width: 400vw;
+    transform: rotate(90deg);
+    transform-origin: top left;
+    transform: rotate(90deg) translateY(-100vh);
+}
+.cp-footer p {
+    position: absolute;
+    padding: 20px;
+    transform: translate(300%, 1000%);
+    text-align: center;
+    font-family: 'HallymGothic-Regular';
+    font-size:15px;
+    color: rgb(73, 63, 63);
 }
 
-.p_info table input {
-	border: 1px solid #ececec;
-	font-size: 13px;
-	color: #4c4c4c;
-	height: 20px;
-	padding: 10px;
-	width: 100%;
-	float: left;
+@media screen and (max-width: 768px){
+    
 }
+/**/
 
-.p_info table th span {
-	color: rgb(108, 119, 102);
-	font-size: 15px;
-	display: inline-block;
-	position: relative;
-	padding: 0 10px 0 0;
-	text-indent: 20px;
-}
+/*company info*/
 
-.p_info table th {
-	text-align: left;
+.grid-container{
+    background-color: #fff;
+    height: 700px;
+    text-align: center;
+    display: grid;
+    grid-template-areas:
+    'left right';
 }
+.grid1{
+    grid-area: left;
+    text-align: right;
+    width: 100%;
+    padding: 23% 10% 10% 30%;
 
-.p_info table td {
-	padding: 6px 0;
-	position: relative;
 }
+.grid2 { 
+    grid-area: right;
+    text-align: left;
+    width: 80%;
+    padding: 23% 0 10% 10%;
 
-.p_info table th span:after {
-	content: '*';
-	font-size: 13px;
-	color: #f95427;
-	position: absolute;
-	top: 0;
-	right: 0px;
 }
+.join_top{
+    padding-top:30px;
+}
+.form_txtInput{
+    width: 80%;
+    padding-right:10%;
 
-.p-info {
-	width: 100%;
-	height: 250px;
-}
 
-.footer p {
-	position: absolute;
-	top: 95%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	font-family: 'HallymGothic-Regular';
-	font-size: 15px;
-	color: white;
 }
-/*제출 버튼*/
-.btn_wrap {
-	text-align: center;
-	margin: 40px 0 30px;
+.join_top{
+    font-family: 'HallymGothic-Regular';
+    font-size: 20px;
+    color:rgb(108, 119, 102);
+    border-bottom:1px solid #ececec;
 }
+.join_form{
+    width:100%;
 
-.submit {
-	background-color: rgb(108, 119, 102);
-	color: rgb(243, 239, 228);
-	font-size: 15px;
 }
-
-button.submit {
-	width: 100px;
-	height: 40px;
+.join_form table {
+    border-spacing: 5;
+    margin:0;
+    padding-left: 0%; 
+    border:0;
+    width:100%;
 }
-
-.button input {
-	font-family: 'HallymGothic-Regular';
-	font-weight: bold;
-	color: #436135;
-	width: 230px;
-	height: 40px;
-	font-size: 10px;
+.join_form table input{ 
+    border:1px solid #ececec;
+    font-size:14px;
+    color:#4c4c4c; 
+    height:35px; 
+    padding:10px; 
+    width:100%; 
+    float:left;
+}
+.footer p{
+    position: absolute;
+    padding: 20px;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'HallymGothic-Regular';
+    font-size:15px;
+    color: rgb(73, 63, 63);
 }

@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@font-face {
+    font-family: 'HallymGothic-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*메인페이지 디자인*/
+.img{
+    position: relative;
+    background-image: url(./main.jpg);                                                               
+    height: 100vh;
+    background-size: cover;
+}
+.img .content{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);                                                                   
+    font-size:3rem;
+    color: white;
+    z-index: 2;
+    text-align: center;
+}
+/* 메인페이지 로고,메뉴바 grid로 나누기*/
+.top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.top h1{
+    text-align: center;
+    font-family: "Roboto";
+    font-style:none;
+    font-size:40px;
+    color: rgba(255, 255, 255, 0.938);
+    margin-top: 0;
+    padding-left: 30px;
+    padding-top:50px;
+}
+/*메인페이지 메뉴바*/
+#nav {
+    padding: 50px 60px 20px 10px;
+    position: absolute;
+    list-style: none;
+    
+}
+#nav li {
+    float: left;
+    position: relative;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+#nav li a{
+    display: block;
+    font-family: 'HallymGothic-Regular';
+    font-weight:500;
+    font-size:20px;
+    color : white;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(128, 128, 128, 0.418);
+}
+#nav li a:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1), inset 0 0 1px rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgb(243, 253, 207);
+}
+/*서브메뉴*/
+#nav ul{
+    float:none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top:40px;
+    width: 95px;
+    text-align: center;
+    opacity: 0;
+}
+#nav ul li{
+    float:none;
+    margin:0;
+    padding:0;
+}
+#nav ul li a {
+    font-size:15px;
+}
+#nav li:hover ul{
+    opacity: 1;
+}
+#nav li:hover ul li{
+    height:35px;
+    overflow:visible;
+    padding: 0;
+}
+/*검색창 부분*/
+input.search {
+    border-radius: 10px;
+    padding: 5px;
+    width: 250px;
+}
+i.fas.fa-search{
+    width: 20px;
+    height: 18px;
+}
+.footer p{
+    position: absolute;
+    top:95%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'HallymGothic-Regular';
+    font-size:15px;
+    color: white;
+}
+
+/*로그인 커버*/
+.login-cover {
+    animation: fadein 0.8s;
+    -webkit-animation: fadein 0.8s; /* Safari and Chrome */
+    z-index: 1000;
+    position: fixed;
+    width: 100%; height: 100%;
+    left: 0; top: 0;
+    background-color: rgba(0,0,0, 0.4);
+    overflow-x: hidden;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/*로그인 폼*/
+.login {
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);  
+    position: absolute;
+    width: 30%;
+    height: 600px;
+    background: rgb(243, 239, 228);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.login-form{
+    width: 100%;
+}
+.login_top{
+    display: flex;
+    text-align: center;
+    font-family: "Roboto";
+    font-size: 25px;
+    color:rgb(108, 119, 102);
+}
+.login_id {
+    color:rgb(108, 119, 102);
+    margin-top: 20px;
+    width: 80%;
+}
+
+.login_id input, .login_pw input{
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    border: 1px solid lightgray;
+    outline: none;
+}
+
+.login_pw {
+    color:rgb(108, 119, 102);
+    margin-top: 20px;
+    width: 80%;
+}
+
+.login_etc {
+    padding: 10px;
+    padding-bottom: 30px;;
+    width: 80%;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+.join a{
+    text-decoration: none;
+    color: rgb(108, 119, 102);
+    font-size:14px;
+}
+.forgot_pw a{
+    text-decoration: none;
+    color: rgb(108, 119, 102);
+    font-size:14px;
+}
+/*모든 버튼 통일 디자인*/
+.submit{
+    background-color: rgb(108, 119, 102);
+    color:rgb(243, 239, 228);
+    font-size: 15px;
+}
+button.submit{
+    width: 100px;
+    height: 40px;
+}
+
+/*회원가입 폼*/
+.form_txtInput{
+    width: 80%;
+}
+.join_top{
+    display: flex;
+    text-align: left;
+    font-family: 'HallymGothic-Regular';
+    font-size: 20px;
+    color:rgb(108, 119, 102);
+    border-bottom:1px solid #ececec;
+}
+.container{
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);  
+    position: absolute;
+    width: 35%;
+    height: 700px;
+    background: rgb(243, 239, 228);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.exform_txt span{
+    color:rgb(108, 119, 102);
+}
+.btn_wrap{
+    text-align:center;
+    margin:40px 0 30px;
+}
+
+.join_form{
+    width:100%;
+    max-width:668px;
+}
+.join_form table {
+    border-spacing: 0;
+    margin:0;
+    padding:0; 
+    border:0;
+    width:100%;
+}
+.join_form table input{ 
+    border:1px solid #ececec;
+    font-size:14px;
+    color:#4c4c4c; 
+    height:35px; 
+    padding:10px; 
+    width:100%; 
+    float:left;
+}
+.join_form table input.email{
+    width:162px; 
+    display: inline-block;
+}
+.join_form table th span{
+    color:rgb(108, 119, 102);
+    font-size:14px; 
+    display:inline-block; 
+    position:relative;
+    padding:0 10px 0 0; 
+    text-indent:20px;
+}
+.join_form table th{
+    text-align:left;
+}
+.join_form table td{
+    padding:6px 0;
+    position: relative;
+}
+.join_form table th span:after{
+    content:'*';
+    font-size:13px;
+    color:#f95427;
+    position:absolute;
+    top:0;
+    right:0px;
+}
+.exform_txt{
+    padding:12px 0 19px 0; 
+    text-align:right;
+    color:#9a9a9a;
+    font-size:13px;
+    border-bottom:1px solid #ececec;
+}
+.exform_txt span{
+    display: inline-block;
+    position:relative;  
+    padding-left:10px
+}
+.exform_txt span:after{
+    content:'*';
+    position:absolute;
+    left:0;top:0; color:#f95427; font-size: 13px; font-weight: bold;
+}
+
+.modify{
+    margin-top: 30px;
+}
+button.modify{
+    font-family: 'HallymGothic-Regular';
+    border-radius: 15px;
+    background-color: rgb(108, 119, 102);
+    color:rgb(253, 252, 247);
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    
+}
+button.modify:hover {
+    font-family: 'HallymGothic-Regular';
+    border-radius: 15px;
+    background-color: rgb(67, 85, 58);
+    color:rgb(253, 252, 247);
+    width: 100px;
+    height: 40px;
+}
+
+
+

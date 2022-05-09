@@ -16,26 +16,46 @@
 <body>
 	<div class="img">
 		<!-- 상단 메뉴바 -->
-		<div class="top">
-			<h1>FARM & FARM</h1>
-			<div class="menu">
-				<ul id="nav">
-					<li><a href="#">마켓</a></li>
-					<li><a href="#">장바구니</a></li>
-					<li><a href="#">기업정보</a>
-						<ul>
-							<li><a href="#">기업리스트</a></li>
-							<li><a href="#">기업등록</a></li>
-						</ul></li>
-					<li><a href="#">마이페이지</a>
-						<ul>
-							<li><a href="#">회원정보 수정</a></li>
-							<li><a href="#">사업자 등록</a></li>
-						</ul></li>
-					<li><a href="#">로그인</a></li>
-				</ul>
+		<!-- 상단 메뉴바 -->
+			<div class="top">
+				<h1>FARM & FARM</h1>
+				<div class="menu">
+					<ul id="nav">							
+							<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
+							<c:if test="${empty mvo.u_num && !empty mvo}">
+							<li><a href="ShoppingList.html">장바구니</a></li>
+						</c:if>
+						<li><a href="#">기업정보</a>
+							<ul>
+								<li><a href="#">기업리스트</a></li>
+								<li><a href="#">기업등록</a></li>
+							</ul></li>
+
+						<c:if test="${!empty mvo}">
+							<li><a href="#">마이페이지</a>
+								<ul>
+									<li><a href="memberInfo.html">회원정보 수정</a></li>
+									<c:if test="${empty mvo.u_num}">
+										<li><a onclick="Updateclick()">사업자 등록</a></li>
+									</c:if>
+									<c:if test="${!empty mvo.u_num}">
+										<li><a href="${pageContext.request.contextPath}/product">물품등록</a></li>
+										<li><a href="${pageContext.request.contextPath}/myproduct.do">내물품확인</a></li>
+									</c:if>
+								</ul>
+							</li>
+						</c:if>
+						<c:if test="${empty mvo}">
+							<li><a onclick="Loginclick()">로그인</a></li>
+							<li><a onclick="Joinclick()">회원가입</a></li>
+						</c:if>
+						<c:if test="${!empty mvo}">
+							<li><a href="${cpath}/logout.do"
+								onclick="alert('로그아웃 하시겠습니까?')">로그아웃</a></li>
+						</c:if>
+					</ul>
+				</div>
 			</div>
-		</div>
 		<!-- 검색 부분 -->
 		<div class="content">
 			<h3>Product Search</h3>

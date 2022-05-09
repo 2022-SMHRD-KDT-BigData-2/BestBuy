@@ -17,26 +17,45 @@
 <body>
 	<div class="img">
 		<!-- 상단 메뉴바 -->
-		<div class="top">
-			<h1>FARM & FARM</h1>
-			<div class="menu">
-				<ul id="nav">
-					<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
-					<li><a href="6-2.html">기업정보</a>
-						<ul>
-							<li><a href="#">기업리스트</a></li>
-							<li><a href="#">기업등록</a></li>
-						</ul></li>
-					<li><a href="#">마이페이지</a>
-						<ul>
-							<li><a href="memberInfo.html">회원정보 수정</a></li>
-							<li><a href="${pageContext.request.contextPath}/product">물품등록</a></li>
-						</ul></li>
-					<li><a href="${cpath}/logout.do"
+			<div class="top">
+				<h1>FARM & FARM</h1>
+				<div class="menu">
+					<ul id="nav">							
+							<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
+							<c:if test="${empty mvo.u_num && !empty mvo}">
+							<li><a href="${pageContext.request.contextPath}/ShoppingList">장바구니</a></li>
+						</c:if>
+						<li><a href="#">기업정보</a>
+							<ul>
+								<li><a href="#">기업리스트</a></li>
+								<li><a href="#">기업등록</a></li>
+							</ul></li>
+
+						<c:if test="${!empty mvo}">
+							<li><a href="#">마이페이지</a>
+								<ul>
+									<li><a href="memberInfo.html">회원정보 수정</a></li>
+									<c:if test="${empty mvo.u_num}">
+										<li><a onclick="Updateclick()">사업자 등록</a></li>
+									</c:if>
+									<c:if test="${!empty mvo.u_num}">
+										<li><a href="${pageContext.request.contextPath}/product">물품등록</a></li>
+										<li><a href="${pageContext.request.contextPath}/myproduct.do">내물품확인</a></li>
+									</c:if>
+								</ul>
+							</li>
+						</c:if>
+						<c:if test="${empty mvo}">
+							<li><a onclick="Loginclick()">로그인</a></li>
+							<li><a onclick="Joinclick()">회원가입</a></li>
+						</c:if>
+						<c:if test="${!empty mvo}">
+							<li><a href="${cpath}/logout.do"
 								onclick="alert('로그아웃 하시겠습니까?')">로그아웃</a></li>
-				</ul>
+						</c:if>
+					</ul>
+				</div>
 			</div>
-		</div>
 
 		<div class="footer">
 			<p>주)구매하겠조 남구 송암로 60, 2층</p>
@@ -56,11 +75,6 @@
 									<td><input type="hidden"name="u_num" value="${mvo.u_num}" />
 										<input type="text" name="p_name" placeholder="상품명을 입력해주세요..">
 									</td>
-								</tr>
-								<br>
-								<tr>
-									<th><span>상품등급</span></th>
-									<td><input type="text" name="p_grade" placeholder="상품가격을 입력해주세요."></td>
 								</tr>
 								<br>
 								<tr>

@@ -4,44 +4,65 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.pro.mapper.ProMapper">
 
-    <select id="userLogin" parameterType="kr.pro.entity.Member" resultType="kr.pro.entity.Member">
-        select * from u_info where u_id=#{u_id} and u_pw=#{u_pw}
-    </select>
-    
-    <insert id ="userJoin" parameterType="kr.pro.entity.Member">
-        insert into u_info(u_id,u_pw,u_nick,u_pnum)
-		values(#{u_id},#{u_pw},#{u_nick},#{u_pnum})
-    </insert>
-    
-    <update id = "updateMember" parameterType="kr.pro.entity.Member">
-        update u_info set u_num = #{u_num}
-        where u_id=#{u_id}
-    </update>
-    
-    <select id="pwcheck" parameterType="kr.pro.entity.Member" resultType="kr.pro.entity.Member">
-        select * from u_info where u_pw=#{u_pw}
-    </select>
-    
-    <insert id="product" parameterType="kr.pro.entity.Product">
-        insert into p_info (p_num,u_num,p_name,p_grade,p_price,p_kind,p_weight,p_sweet,p_pack,p_data,p_option)
-        values (p_info_p_num.nextval, #{u_num},#{p_name},#{p_grade},#{p_price},#{p_kind},#{p_weight}
-        ,#{p_sweet},#{p_pack},#{p_data},#{p_option})
-    </insert>
-    
-    <select id="productp_num" parameterType="kr.pro.entity.Product" resultType="kr.pro.entity.Product">
-        select p_num,u_num from p_info where p_name=#{p_name}
-    </select>
+	<select id="userLogin" parameterType="kr.pro.entity.Member"
+		resultType="kr.pro.entity.Member">
+		select * from u_info where u_id=#{u_id} and u_pw=#{u_pw}
+	</select>
 
-    <insert id="productimg" parameterType="kr.pro.entity.Productimage">
-        insert into i_info (i_num,p_num,i_raw,i_path,i_save,u_num)
-        values (i_info_i_num.nextval,#{p_num},#{i_raw},#{i_path},#{i_save},#{u_num})
+	<insert id="userJoin" parameterType="kr.pro.entity.Member">
+		insert into u_info(u_id,u_pw,u_nick,u_pnum)
+		values(#{u_id},#{u_pw},#{u_nick},#{u_pnum})
+	</insert>
+
+	<update id="updateMember" parameterType="kr.pro.entity.Member">
+		update u_info set u_num = #{u_num}
+		where u_id=#{u_id}
+	</update>
+
+	<select id="pwcheck" parameterType="kr.pro.entity.Member" resultType="kr.pro.entity.Member">
+		select * from u_info where u_pw=#{u_pw}
+	</select>
+
+	<insert id="product" parameterType="kr.pro.entity.Product">
+		insert into p_info(p_num,u_num,p_name,p_price,p_kind,p_weight,p_sweet,p_pack,p_data,p_option)
+		values (p_info_p_num.nextval,#{u_num},#{p_name},#{p_price},#{p_kind},#{p_weight},#{p_sweet},#{p_pack},#{p_data},#{p_option})
+	</insert>
+
+	<select id="productp_num" parameterType="kr.pro.entity.Product" resultType="kr.pro.entity.Product">
+		select p_num,u_num from p_info where p_name=#{p_name}
+	</select>
+
+	<insert id="productimg" parameterType="kr.pro.entity.Productimage">
+		insert into i_info (i_num,p_num,i_raw,i_path,i_save,u_num)
+		values (i_info_i_num.nextval,#{p_num},#{i_raw},#{i_path},#{i_save},#{u_num})
+	</insert>
+
+	<select id="myproduct" resultType="kr.pro.entity.product2">
+		select p.p_name, p.p_num, i.i_num, i.i_save
+		from p_info p, i_info i
+		where p.p_num = i.p_num
+		order by p.p_num
+	</select>
+	
+	<select id="myproduct2" resultType="kr.pro.entity.product2">
+		select * from p_info p, i_info i
+		where p.p_num = i.p_num and p.p_num = #{p_num}
+	</select>
+
+	<select id="searchproduct" resultType="kr.pro.entity.Product">
+		select * from p_info
+		where p_kind like '%'||#{p_kind}||'%'
+	</select>
+	
+	<select id="market" resultType="kr.pro.entity.product2">
+	    select * from p_info p,i_info i
+	    where p.p_num=i.p_num
+	</select>
+	
+	<insert id ="ShoppingListinsert" parameterType="kr.pro.entity.Market">
+	    insert into s_info(s_idx,u_id,p_num,s_amount,s_price)
+	    values (s_info_idx.nextval, #{u_id}, #{p_num},#{s_amount}, #{s_price})
 	</insert>
 	
-    <select id = "myproduct" resultType="kr.pro.entity.Product">
-        select p.p_name, p.p_num, i.i_num 
-        from p_info p, i_info i
-        where p.p_num = i.p_num
-        order by p.p_num
-    </select> 
-    
+
 </mapper>

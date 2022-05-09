@@ -18,20 +18,21 @@
 <body>
 	<div class="top_background">
 		<!-- 상단 메뉴바 -->
-		<div class="top">
-			<h1>FARM & FARM</h1>
-			<div class="menu">
-				<ul id="nav">
-					<li><a href="#">마켓</a></li>
-					<c:if test="${empty mvo.u_num && !empty mvo}">
-						<li><a href="ShoppingList.html">장바구니</a></li>
-					</c:if>
-					<li><a href="#">기업정보</a>
-						<ul>
-							<li><a href="BusinessList.html">기업리스트</a></li>
-							<li><a href="BusinessRegi.html">기업등록</a></li>
-						</ul></li>
-					<c:if test="${!empty mvo}">
+			<div class="top">
+				<h1>FARM & FARM</h1>
+				<div class="menu">
+					<ul id="nav">							
+							<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
+							<c:if test="${empty mvo.u_num && !empty mvo}">
+							<li><a href="${pageContext.request.contextPath}/ShoppingList">장바구니</a></li>
+						</c:if>
+						<li><a href="#">기업정보</a>
+							<ul>
+								<li><a href="#">기업리스트</a></li>
+								<li><a href="#">기업등록</a></li>
+							</ul></li>
+
+						<c:if test="${!empty mvo}">
 							<li><a href="#">마이페이지</a>
 								<ul>
 									<li><a href="memberInfo.html">회원정보 수정</a></li>
@@ -39,8 +40,8 @@
 										<li><a onclick="Updateclick()">사업자 등록</a></li>
 									</c:if>
 									<c:if test="${!empty mvo.u_num}">
-										<li><a
-											href="${pageContext.request.contextPath}/productinsert">물품등록</a></li>
+										<li><a href="${pageContext.request.contextPath}/product">물품등록</a></li>
+										<li><a href="${pageContext.request.contextPath}/myproduct.do">내물품확인</a></li>
 									</c:if>
 								</ul>
 							</li>
@@ -50,11 +51,12 @@
 							<li><a onclick="Joinclick()">회원가입</a></li>
 						</c:if>
 						<c:if test="${!empty mvo}">
-							<li><a href="${cpath}/logout.do" onclick="alert('로그아웃 하시겠습니까?')">로그아웃</a></li>
+							<li><a href="${cpath}/logout.do"
+								onclick="alert('로그아웃 하시겠습니까?')">로그아웃</a></li>
 						</c:if>
-				</ul>
+					</ul>
+				</div>
 			</div>
-		</div>
 		<div class="wrapper">
 			<div class="top_intro">
 				<div class="intro">FARM&FARM은</div>
@@ -74,7 +76,7 @@
 		</div>
 	</div>
 	<!--전체 아이템 리스트 -->
-	<form action="${cpath}/myproduct.do" method="post">
+	<form id= "myproduct" action="${cpath}/myproduct.do" method="post">
 	<div class="item-cover">
 		<div class="item_List">
 			<ul class="row">
@@ -86,14 +88,12 @@
 				<input type="hidden"name="u_num" value="${vo.u_num}"/>
 				</li>
 				<c:forEach var="vo" items="${ mlist }" varStatus="status">
-				
+				<c:url var="contentLink" value="/myproduct2.do/${vo.p_num}"/>
 				<li class="cell">
-			
 					<div class="img-box">
-						<a href="product.html"></a>
+						<a><img src="${cpath}/resources/css/image/${vo.i_save}"></a>
 					</div>
-			
-					<div class="product-name" >${vo.p_num}</div>
+					<div class="product-name"> <a href = "${contentLink}">${vo.p_num}</a></div>
 					<div class="product-name" >${vo.p_name}</div>
 					
 				</li>
@@ -103,6 +103,7 @@
 		</div>
 	</div>
 	</form>
+
 </body>
 
 </html>

@@ -40,6 +40,7 @@
 </script>
 </head>
 <body>
+
 	<form action="${cpath}/main.do" id="main">
 		<div class="img">
 			<!-- 상단 메뉴바 -->
@@ -49,7 +50,7 @@
 					<ul id="nav">							
 							<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
 							<c:if test="${empty mvo.u_num && !empty mvo}">
-							<li><a href="ShoppingList.html">장바구니</a></li>
+							<li><a href="${pageContext.request.contextPath}/ShoppingList">장바구니</a></li>
 						</c:if>
 						<li><a href="#">기업정보</a>
 							<ul>
@@ -82,23 +83,27 @@
 					</ul>
 				</div>
 			</div>
-			<!-- 검색 부분 -->
-			<div class="content">
-				<h3>Product Search</h3>
-				<form action="#">
-					<div class="input-group">
-						<input type="text" class="search" placeholder="검색어 입력">
-						<button class="img-button" type="submit" name="search" value="">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
-				</form>
+		 
+		 </form>
+				<!-- 검색 부분 -->
+			 <div class="content">
+                <h3>Product Search</h3>
+                <p>
+                </p>
+                <form action="${cpath}/searchproduct.do">
+                    <div class="input-group">
+                        <input type="text" class="search" name="p_kind" placeholder="검색어 입력">
+                        <button class="img-button" type="submit" name="search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
 			</div>
 			<div class="footer">
 				<p>주)구매하겠조 남구 송암로 60, 2층</p>
 			</div>
-		</div>
-
+			
+	</div>
 		<!--로그인 페이지 부분-->
 		<div class="login-cover" style="display: none" id="login">
 			<form action="${cpath}/login.do" method="post">
@@ -229,6 +234,6 @@
 				</div>
 			</form>
 		</div>
-	</form>
+		
 </body>
 </html>

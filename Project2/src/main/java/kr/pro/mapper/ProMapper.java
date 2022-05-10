@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.pro.entity.Market;
+import kr.pro.entity.Market2;
 import kr.pro.entity.Member;
 import kr.pro.entity.Product;
 import kr.pro.entity.Productimage;
@@ -42,4 +43,8 @@ public interface ProMapper {
 	public List<product2> market();
 	
 	public void ShoppingListinsert(Market vo);
+	
+	public List<Market2> ShoppingList(String u_id);
+	
+	public void insertGo(Product vo);
 }

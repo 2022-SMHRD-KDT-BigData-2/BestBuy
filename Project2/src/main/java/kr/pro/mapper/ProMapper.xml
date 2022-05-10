@@ -61,10 +61,20 @@
 	</select>
 	
 	<insert id ="ShoppingListinsert" parameterType="kr.pro.entity.Market">
-	    insert into s_info(s_idx,u_id,p_num,s_amount,s_price)
-	    values (s_info_idx.nextval, #{u_id}, #{p_num},#{s_amount}, #{s_price})
+	    insert into s_info(s_idx,u_id,p_num,s_price)
+	    values (s_info_idx.nextval, #{u_id}, #{p_num}, #{s_price})
 	</insert>
 
+	<select id = "ShoppingList" resultType="kr.pro.entity.Market2" parameterType="kr.pro.entity.Market2">
+	    select distinct i.i_save, p.p_name, s.s_amount,s.s_price,s.u_id
+	    from i_info i, p_info p, s_info s
+	    where p.p_num=i.p_num and p.p_num = s.p_num and s.u_id = #{u_id}
+	</select>
+	
+	<update id="insertGo" parameterType="kr.pro.entity.Product">
+       update p_info set p_grade=#{p_grade} where p_num=#{p_num}
+   </update>
+	
 	
 
 </mapper>

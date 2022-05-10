@@ -16,28 +16,29 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>	
 <script type="text/javascript">
+   var p;
    function goSend(p_num){
-	   var weight=$("#weight"+p_num).val();
-	   var formData=$("#frm"+p_num).serialize();
-	   //alert(formData);
-	    $.ajax({
-           url: 'http://220.93.165.132:5000/sendFrame?weight='+weight, 
+     p = p_num;
+      var weight=$("#weight"+p_num).val();
+      var formData=$("#frm"+p_num).serialize();
+      //alert(formData);
+       $.ajax({
+           url: 'http://localhost:5000/sendFrame?weight='+weight, 
            //dataType: 'json', // what to expect back from server
            //cache: false,
            //contentType: false,
            //processData: false,
            data: formData,
            type: 'post',
-           success: callback,
+           success: function(data){
+              location.href="http://localhost:8081/controller/insertGo.do?p_num="+p+"&p_grade="+data;
+           },
            error: function (response) {
               alert("error");
            }
-        });	   
-   }
-   function callback(data){
-	   alert(data);
-   }
-</script>	
+        });      
+   }   
+</script>
 </head>
 <body>
 	<div class="top_background">
@@ -127,8 +128,7 @@
             <td>당도</td>
             <td>포장상태</td>
          </tr>
-    		<c:forEach var="vo" items="${ list }" end="0" varStatus="status">
-
+    		
     		<tr>
     			<td>${vo.p_name}</td>	    	
     			<td>${vo.p_kind}</td>    		
@@ -139,26 +139,30 @@
     			<td>${vo.p_sweet}</td>    		    	
     			<td>${vo.p_pack}</td>
     		</tr>
-    		<form id="frm${vo.p_num}">	
-    		<input type="hidden" id="img1" name="img1" value="${vo.i_save}"/>
-    		<input type="hidden" id="img2" name="img2" value="${vo.i_save}"/>
-    		<input type="hidden" id="img3" name="img3" value="${vo.i_save}"/>
-    		<input type="hidden" id="img4" name="img4" value="${vo.i_save}"/>
-    		<tr>
-    		    <td>무게:<input type="text" name="weight" id="weight${vo.p_num}"/></td>
-    		    
-    			<td colspan="8"><button type="button" onclick="goSend(${vo.p_num})">Flask로 전송</button></td>
-    		</tr>	
-            </form>
-    		</c:forEach>
-    		</table>		
-    				<a href="<c:url value='/myproductUpdate.do/${vo.p_num}'/>" role="button">수정</a>
-    				<a href="<c:url value='/myproductDelete.do/${vo.p_num}'/>"role="button">삭제</a>
-    				<a href="<c:url value='/myproduct.do'/>" role="button">목록</a>
-					
-			</ul>			
-		</div>
-	</div>
+    		
+    		<form id="frm${list[0].p_num}">
+                  <input type="hidden" id="p_num" name="p_num"value="${list[0].p_num}" />
+                  <c:forEach var="vo" items="${ list }" varStatus="status">
+                     <input type="hidden" id="img${status.index}"name="img${status.index}" value="${vo.i_save}" />
+                  </c:forEach>
+
+                  <tr>
+                     <td>무게:<input type="text" name="weight" id="weight${list[0].p_num}" /></td>
+
+                     <td colspan="8"><button type="button" onclick="goSend(${list[0].p_num})">Flask로 전송</button></td>
+                  </tr>
+               </form> 
+            </table>
+            <a href="<c:url value='/myproductUpdate.do/${list[0].p_num}'/>"
+               role="button">수정</a>
+            <a href="<c:url value='/myproductDelete.do/${list[0].p_num}'/>"
+               role="button">삭제</a>
+            <a href="<c:url value='/myproduct.do'/>" role="button">목록</a>
+
+         </ul>
+      </div>
+   </div>
+
 
 	
 

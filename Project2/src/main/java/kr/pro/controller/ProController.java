@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,12 +22,13 @@ import org.springframework.ui.Model;
 import kr.pro.entity.Productimage;
 import kr.pro.entity.product2;
 import kr.pro.entity.Market;
+import kr.pro.entity.Market2;
 import kr.pro.entity.Member;
 import kr.pro.entity.Product;
 import kr.pro.mapper.ProMapper;
 
 @Controller
-public class ProController {
+public class ProController<ShoppingList> {
 
 	@Autowired
 	private ProMapper proMapper;
@@ -216,7 +218,6 @@ public class ProController {
 	
 	@RequestMapping("/ShoppingListinsert.do")
 	public String ShoppingListinsert(HttpServletRequest request, Market vo) {
-		
 		proMapper.ShoppingListinsert(vo);
 		HttpSession session = request.getSession();
 		session.setAttribute("vo", vo);
@@ -224,12 +225,30 @@ public class ProController {
 	}
 	
 	
-	@RequestMapping("/ShoppingList")
-	public String ShoppingList(Model model) {
+	@RequestMapping("/ShoppingList/{u_id}")
+	public String ShoppingList(Model model,@PathVariable("u_id") String u_id) {
+		List<Market2> list = proMapper.ShoppingList(u_id);
+		List<Market2> unique_list = new ArrayList<Market2>();
 		
+		unique_list.add(list.get(0));
+		for(int i=1; i<list.size();i++) {
+			for(int j=0;j<unique_list.size();j++) {
+				if(list.get(i).getP_name().equals(unique_list.get(j).getP_name()))
+						break;
+				if(j == unique_list.size() - 1)
+					unique_list.add(list.get(i));
+			}
+		}
+		
+		model.addAttribute("list", unique_list);
 		return "ShoppingList";
 	}
 	
+	@RequestMapping("/insertGo.do")
+	   public String insertGo(Product vo) {
+	      proMapper.insertGo(vo);
+	      return "redirect:/";
+	   }
 
 	private List<product2> Deduplication_List(List<product2> _input_list)
 	{

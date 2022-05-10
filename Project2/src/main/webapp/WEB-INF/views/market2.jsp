@@ -14,44 +14,6 @@
 <link rel="stylesheet" href="${cpath}/resources/css/product.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-<script type="text/javascript">
-	var sell_price;
-	var amount;
-
-	function init() {
-		sell_price = document.form.sell_price.value;
-		amount = document.form.amount.value;
-		document.form.sum.value = sell_price;
-		change();
-	}
-
-	function add() {
-		hm = document.form.amount;
-		hm.value++;
-
-		var sum_ = parseInt(hm.value) * sell_price;
-		document.getElementById("my_sum").innerHTML = sum_;
-	}
-
-	function del() {
-		hm = document.form.amount;
-		if (hm.value > 1) {
-			hm.value--;
-			var sum_ = parseInt(hm.value) * sell_price;
-			document.getElementById("my_sum").innerHTML = sum_;
-		}
-	}
-
-	function change() {
-		hm = document.form.amount;
-
-		if (hm.value < 0) {
-			hm.value = 0;
-		}
-		var sum_ = parseInt(hm.value) * sell_price;
-		document.getElementById("my_sum").innerHTML = sum_;
-	}
-</script>
 <body>
 	<div class="top_background">
 		<!-- 상단 메뉴바 -->
@@ -143,21 +105,16 @@
 			</div>
 			<c:if test="${!empty mvo}">
 			<form action="${cpath}/ShoppingListinsert.do" method="post" name="form">
-				<input type="hidden" name="u_id" value="${mvo.u_id}" /> 
-				<input type="hidden" name="p_num" value="${list[0].p_num}" />
-				<div class="init">
-					<div class="my_sum">
-					수량  <input type=hidden name="sell_price" value="6930"> 
-					<input type="text" class="count" name="amount" id = "s_amount" value="1" size="3" onchange="change();"> 
-					<input type="button" class="pl-btn" value=" + " onclick="add();"> 
-					<input type="button" class="mi-btn" value=" - " onclick="del();"><br> 
-					<input type="hidden" name="sum" id="s_price" size="11" readonly> 총 상품금액
-						<div id="my_sum"></div>
+				<div>
+					<div>
+					<input type="hidden" name="u_id" value="${mvo.u_id}" /> 
+					<input type="hidden" name="p_num" value="${list[0].p_num}" />
+					<input type="hidden" name="s_price" value="${list[0].p_price}" />
 					</div>
 				</div>
 				<div class="button-area">
 					<button class="button" type="submit">
-						<a href="${pageContext.request.contextPath}/ShoppingListinsert.do" onclick="alert('장바구니에 상품 담기를 완료했습니다.');">장바구니 담기</a>
+						<a href ="${pageContext.request.contextPath}/ShoppingList/${mvo.u_id}" onclick="alert('장바구니에 상품 담기를 완료했습니다.');">장바구니 담기</a>
 					</button>
 					<button class="button" type="submit"> 
 						<a href="productBuy.html">구매하기</a>

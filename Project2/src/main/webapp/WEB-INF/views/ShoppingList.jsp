@@ -5,54 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Page-Enter" content="blendTrans(Duration=1)" />
-    <meta http-equiv="Page-Exit" content="blendTrans(Duration=1)" />
-    <title>Document</title>
-    <link rel="stylesheet" href="${cpath}/resources/css/product.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <script type="text/javascript">
-        var sell_price;
-        var amount;
-
-        function init () {
-            sell_price = document.form.sell_price.value;
-            amount = document.form.amount.value;
-            document.form.sum.value = sell_price;
-            change();
-        }
-
-        function add () {
-            hm = document.form.amount;
-            hm.value ++ ;
-
-            var sum_ = parseInt(hm.value) * sell_price;
-        document.getElementById("my_sum").innerHTML=sum_;
-        }
-
-        function del () {
-            hm = document.form.amount;
-                if (hm.value > 1) {
-                    hm.value -- ;
-                    var sum_ = parseInt(hm.value) * sell_price;
-        document.getElementById("my_sum").innerHTML=sum_;
-                }
-        }
-
-        function change () {
-            hm = document.form.amount;
-
-                if (hm.value < 0) {
-                    hm.value = 0;
-                }
-            var sum_ = parseInt(hm.value) * sell_price;
-        document.getElementById("my_sum").innerHTML=sum_;
-        } 
-    </script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Page-Enter" content="blendTrans(Duration=1)" />
+<meta http-equiv="Page-Exit" content="blendTrans(Duration=1)" />
+<title>Document</title>
+<link rel="stylesheet" href="${cpath}/resources/css/product.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
-<body onload="init();">
+<body >
         <div class="top_background">
             <!-- 상단 메뉴바 -->
 			<div class="top">
@@ -106,44 +68,17 @@
                             <td>전체선택</td>
                             <td>선택삭제</td>
                         </tr>
+                        <c:forEach var="vo" items="${ list }" varStatus="status">
                         <tr>
-                            <form action="#" name="form" method="get">
+                       
                             <td><input type="checkbox" id="check"><label for="check"></label></td>
-                            <td><img src="./ListImage/1-1.png" id="i_idx" name="i_idx"></td>
-                            <td><div class="i_name"><a href="product.html" name="i_name">영주 별사과 600g</a></div></td>
-                            <td>
-                                    <div class="init">
-                                        <div class="my_sum">
-                                            <input type=hidden name="sell_price" value="6930">
-                                            <input type="text" class="count" name="amount" value="1" size="3" onchange="change();"> 
-                                            <input type="button" class="pl-btn" value=" + " onclick="add();">
-                                            <input type="button" class="mi-btn" value=" - " onclick="del();"><br>
-                                            <input type="hidden" name="sum" size="11" readonly>
-                                        </div>
-                                    </div>
-                                </form>
-                            </td>
+                            <td><img src="${cpath}/resources/css/image/${vo.i_save}"  id="i_idx" name="i_idx"></td>
+                            <td><div class="i_name"><a name="i_name">${vo.p_name}</a><br>
+                            						<a name="i_name">${vo.s_amount}</a>개<br>
+                            						<a name="i_name">${vo.s_price}</a>원</div></td>
                             <td><div id="my_sum"></div></td>
                         </tr>
-                        <tr>
-                            <td><input type="checkbox" id="check"><label for="check"></label></td>
-                            <td><img src="./ListImage/2-2.png" id="i_idx" name="i_idx"></td>
-                            <td><div class="i_name"><a href="product.html" name="i_name">용암 참외 1.2kg</a></div></td>
-                            <td>
-                                <form action="#" name="form" method="get">
-                                    <div class="init">
-                                        <div class="my_sum">
-                                            <input type=hidden name="sell_price" value="16900">
-                                            <input type="text" class="count" name="amount" value="1" size="3" onchange="change();"> 
-                                            <input type="button" class="pl-btn" value=" + " onclick="add();">
-                                            <input type="button" class="mi-btn" value=" - " onclick="del();"><br>
-                                            <input type="hidden" name="sum" size="11" readonly>
-                                        </div>
-                                    </div>
-                                </form>
-                            </td>
-                            <td><div id="my_sum"></div></td>
-                        </tr>
+                        </c:forEach>
                     </table>
 
                 </div>

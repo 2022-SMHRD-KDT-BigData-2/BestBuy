@@ -46,7 +46,7 @@
 					<ul id="nav">							
 							<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
 							<c:if test="${empty mvo.u_num && !empty mvo}">
-							<li><a href="${pageContext.request.contextPath}/ShoppingList">장바구니</a></li>
+							<li><a href = "${pageContext.request.contextPath}/ShoppingList/${mvo.u_id}">장바구니</a></li>
 						</c:if>
 						<li><a href="#">기업정보</a>
 							<ul>

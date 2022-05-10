@@ -3,6 +3,7 @@ select * from c_info;
 select * from s_info;
 select * from p_info;
 select * from i_info;
+select * from r_info;
 
 
 drop table p_info;
@@ -90,5 +91,6 @@ create sequence r_info_r_num;
 insert into i_info(i_num,i_path)
 values(i_info_i_num.nextval, '/resources/css/ListImage/4.png');
 
-select * from p_info p,i_info i
-	    where p.p_num=63;
+insert into i_info(s_idx,u_id,p_num,s_amount,s_price)
+values(s_info_idx.nextval,gaeul,167,1,1);
+

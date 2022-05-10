@@ -115,7 +115,25 @@ i.fas.fa-search{
     overflow:visible;
     padding: 0;
 }
-
+/*메인페이지 반응형*/
+@media screen and (max-width: 768px){
+    /*top - grid*/
+    .top h1{
+        text-align: left;
+        font-size:30px;
+        padding-left: 50px;
+    }
+    #nav {
+        padding: 45px 10px 20px 10px;
+    }
+    #nav li {
+        padding-right: 15px;
+    }
+    #nav li a{
+        font-size:14px;
+        padding-left: 0;
+}
+}
 
 
 
@@ -167,6 +185,7 @@ i.fas.fa-search{
 img.product-detail{
     height: 100%;
 }
+
 /*상세페이지 안내사항*/
 .pro-intro{
     border-spacing: 0;
@@ -216,18 +235,35 @@ input.count{
 
 /*리뷰*/
 .r-table{
-
     border-top: 1px solid #43613560;
     border-bottom: 1px solid #43613560;
     border-spacing: 10px;
     border-collapse: separate;
 }
-
 .review{
     transform: translate(30%, 10%);    
     padding-bottom: 5%;       
 }
-
+@media screen and (max-width: 768px){
+    .product-image{
+        padding-left: 70px;
+        width:300px;
+        height:400px;
+    }
+    .init{
+        text-align: right;
+    }
+    .pro-button-area{
+        padding-right: 50px;
+    }
+    .review{
+        transform: translate(2%, 10%);
+    }
+    .main img{
+        width: 80%;
+        padding-top:50px;
+    }
+}
 
 /*사업자 상품등록*/
 .login-cover {
@@ -361,11 +397,14 @@ button.submit{
     height: 40px;
     font-size: 10px;
 }
-
 .pro-button-area{
     padding-left: 150px;
 }
-
+@media screen and (max-width: 768px){
+    .container{
+        width: 530px;
+}
+}
 /*상품이미지 등록 Regi2*/
 #file{
     display: none;
@@ -442,6 +481,7 @@ img {
     font-family: 'HallymGothic-Regular';
     color: #2f382a;
 }
+
 input#check{
     display:none;
 }
@@ -457,7 +497,6 @@ input#check + label:before{
     border:1px solid #cbcbcb;
     vertical-align:middle;/*체크 전과 체크 후 높이 차이 때문에 설정*/
 }
-
 input#check + label:after {
     display:block; 
     clear:both; 
@@ -526,6 +565,60 @@ input#check :checked + label:before{
     font-size:15px;
     color: rgb(73, 63, 63);
 }
+.buy-btn{
+    display: block;
+    border: 1.5px solid #436135;
+    font-weight:bold;
+    background-color: white;
+    width: 230px;
+    height: 40px;
+    font-family: 'HallymGothic-Regular';
+    color:#436135;
+    font-size: 15px;
+}
+.buy-btn a{
+    text-decoration: none;
+    font-family: 'HallymGothic-Regular';
+    color:#436135;
+    font-size: 15px;
+}
+@media screen and (max-width: 768px){
+    .cart-grid-container{
+        text-align: center;
+        display: grid;
+        grid-template-areas:
+        'top'
+        'left'
+        'right';
+    }
+    .grid-left{
+        padding: 50px 0 0 10%;
+    }
+    .grid-right{
+        padding:0 0 0 10%;
+    }
+    .address, .cart-price{
+        width: 500px;
+        text-align: left;
+    }
+    .add-content{
+        position:relative;
+
+    }
+    .add-button, .buy-btn{
+        position: absolute;
+    }
+    #member_post, .buy-btn{
+        transform: translate(118%, -40%);
+    }
+    .total{
+        float: left;
+    }
+    .total-bottom{
+        padding-top: 50px;
+    }
+}
+
 /* productBuy 주문서 */
 .sideBanner{
     position: absolute;
@@ -568,7 +661,6 @@ input#check :checked + label:before{
 .buy-main{
     display: flex;
     justify-content: center;
-    
 }
 .buy-form{
     text-align: center;
@@ -630,6 +722,21 @@ input#check :checked + label:before{
     background-color: #fff;
     padding: 15px 42px 15px 42px;
 }
+@media screen and (max-width: 768px){
+    .txt-label img{
+        transform: translate(670%);
+    }
+    .buy-main{
+        display: block;
+    }
+    .buy-form li table{
+        width: 68vh;
+    }
+    .button-area2{
+        transform: translate(35%, 50%); 
+    }
+}
+
 /*구매후기*/
 /*별점*/
 .star-rating {

@@ -79,7 +79,7 @@
 				<div class="join_top">
 					<h3>상품등록</h3>
 					<form action="${cpath}/product.do" method="post">
-                    	<div class="p_info">
+                    	<div class="p_info" >
                         	<table>
                             	<colgroup>
                                 	<col width="30%"/>
@@ -131,12 +131,12 @@
                                         </tr>                                                                                
                                     </tbody>
                                 </table>
-                            </div>
                             <div class="btn_wrap"> 
                                 <button type="submit" class="submit">상품등록</button>
                             </div>
-                        </form>	
+                            </div>
 				</div>
+                        </form>	
 			</div>
 		</div>
 	</div>

@@ -148,10 +148,10 @@
 				<div class="init">
 					<div class="my_sum">
 					수량  <input type=hidden name="sell_price" value="6930"> 
-					<input type="text" class="count" name="amount" value="1" size="3" onchange="change();"> 
+					<input type="text" class="count" name="amount" id = "s_amount" value="1" size="3" onchange="change();"> 
 					<input type="button" class="pl-btn" value=" + " onclick="add();"> 
 					<input type="button" class="mi-btn" value=" - " onclick="del();"><br> 
-					<input type="hidden" name="sum" size="11" readonly> 총 상품금액
+					<input type="hidden" name="sum" id="s_price" size="11" readonly> 총 상품금액
 						<div id="my_sum"></div>
 					</div>
 				</div>

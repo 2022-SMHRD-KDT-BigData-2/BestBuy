@@ -15,8 +15,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 <body>
+
 	<div class="top_background">
-		<!-- 상단 메뉴바 -->
 		<!-- 상단 메뉴바 -->
 		<div class="top">
 			<h1>FARM & FARM</h1>
@@ -24,7 +24,7 @@
 				<ul id="nav">
 					<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
 					<c:if test="${empty mvo.u_num && !empty mvo}">
-						<li><a href="${pageContext.request.contextPath}/ShoppingList">장바구니</a></li>
+						<li><a href="${pageContext.request.contextPath}/ShoppingList/${mvo.u_id}">장바구니</a></li>
 					</c:if>
 					<li><a href="#">기업정보</a>
 						<ul>
@@ -110,15 +110,19 @@
 					<input type="hidden" name="u_id" value="${mvo.u_id}" /> 
 					<input type="hidden" name="p_num" value="${list[0].p_num}" />
 					<input type="hidden" name="s_price" value="${list[0].p_price}" />
+					수량 : <input type="text" name="s_amount"/>개
+					총 금액 : 
 					</div>
 				</div>
 				<div class="button-area">
 					<button class="button" type="submit">
 						<a href ="${pageContext.request.contextPath}/ShoppingList/${mvo.u_id}" onclick="alert('장바구니에 상품 담기를 완료했습니다.');">장바구니 담기</a>
 					</button>
-					<button class="button" type="submit"> 
-						<a href="productBuy.html">구매하기</a>
+					<c:forEach var="vo" items="${ list }" varStatus="status">
+					<button class="button" type="button"> 
+						<a href="${pageContext.request.contextPath}/productBuy/${vo.p_num}">구매하기</a>
 					</button>
+					</c:forEach>
 				</div>
 			</form>
 		</c:if>

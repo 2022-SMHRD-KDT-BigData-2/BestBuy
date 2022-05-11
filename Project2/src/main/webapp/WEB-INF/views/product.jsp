@@ -124,7 +124,7 @@
                                                     </tr>
                                                     <tr>
                                                     	<td>상세설명</td>
-                                                    	<td><textarea rows="20" name="p_data"></textarea></td>
+                                                    	<td><input type="text" name="p_data"></td>
                                                     </tr>
                                                 </table>
                                             </td>

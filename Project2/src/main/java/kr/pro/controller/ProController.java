@@ -136,7 +136,7 @@ public class ProController<ShoppingList> {
 		Product vo2 = proMapper.productp_num(pvo);
 		int p_num = vo2.getP_num();
 		String u_num = vo2.getU_num();
-		String saveDir = "C:\\Users\\SM014\\git\\BestBuy\\Project2\\src\\main\\webapp\\resources\\image";
+		String saveDir = "C:\\Users\\SM014\\git\\BestBuy\\Project2\\src\\main\\webapp\\resources\\css\\image";
 		File dir = new File(saveDir);
 
 		if (!dir.exists())
@@ -246,9 +246,15 @@ public class ProController<ShoppingList> {
 	
 	@RequestMapping("/insertGo.do")
 	   public String insertGo(Product vo) {
+	      System.out.println("insertGo"+vo);
 	      proMapper.insertGo(vo);
 	      return "redirect:/";
 	   }
+	
+	@RequestMapping("productBuy/{p_num}")
+	public String productBuy(@PathVariable("p_num") int p_num, Model model) {
+		return "productBuy";
+	}
 
 	private List<product2> Deduplication_List(List<product2> _input_list)
 	{

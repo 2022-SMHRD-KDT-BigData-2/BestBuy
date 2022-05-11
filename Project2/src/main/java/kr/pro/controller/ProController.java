@@ -251,11 +251,25 @@ public class ProController<ShoppingList> {
 	      return "redirect:/";
 	   }
 	
-	@RequestMapping("productBuy/{p_num}")
-	public String productBuy(@PathVariable("p_num") int p_num, Model model) {
-		return "productBuy";
+	
+	@RequestMapping("/productBuy/{u_id}")
+	public String productBuy(Model model,@PathVariable("u_id") String u_id) {
+		List<Market2> list = proMapper.ShoppingList(u_id);
+		List<Market2> unique_list = new ArrayList<Market2>();
+		
+		unique_list.add(list.get(0));
+		for(int i=1; i<list.size();i++) {
+			for(int j=0;j<unique_list.size();j++) {
+				if(list.get(i).getP_name().equals(unique_list.get(j).getP_name()))
+						break;
+				if(j == unique_list.size() - 1)
+					unique_list.add(list.get(i));
+			}
+		}		
+		model.addAttribute("list", unique_list);
+		return"productBuy";		
 	}
-
+	
 	private List<product2> Deduplication_List(List<product2> _input_list)
 	{
 		List<product2> unique_list = new ArrayList<product2>();

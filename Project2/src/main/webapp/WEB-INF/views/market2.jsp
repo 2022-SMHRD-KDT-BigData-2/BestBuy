@@ -110,19 +110,14 @@
 					<input type="hidden" name="u_id" value="${mvo.u_id}" /> 
 					<input type="hidden" name="p_num" value="${list[0].p_num}" />
 					<input type="hidden" name="s_price" value="${list[0].p_price}" />
-					수량 : <input type="text" name="s_amount"/>개
-					총 금액 : 
+					<input type="hidden" name="s_amount" value="1"/>
+					 
 					</div>
 				</div>
 				<div class="button-area">
 					<button class="button" type="submit">
 						<a href ="${pageContext.request.contextPath}/ShoppingList/${mvo.u_id}" onclick="alert('장바구니에 상품 담기를 완료했습니다.');">장바구니 담기</a>
 					</button>
-					<c:forEach var="vo" items="${ list }" varStatus="status">
-					<button class="button" type="button"> 
-						<a href="${pageContext.request.contextPath}/productBuy/${vo.p_num}">구매하기</a>
-					</button>
-					</c:forEach>
 				</div>
 			</form>
 		</c:if>

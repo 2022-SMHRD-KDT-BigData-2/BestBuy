@@ -47,4 +47,6 @@ public interface ProMapper {
 	public List<Market2> ShoppingList(String u_id);
 	
 	public void insertGo(Product vo);
+	
+	public void updatebuy(Market vo);
 }

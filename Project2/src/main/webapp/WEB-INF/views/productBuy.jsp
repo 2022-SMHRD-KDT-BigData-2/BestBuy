@@ -61,7 +61,7 @@
         </div>
         <div class="sideBanner">
             <span class="txt-label">
-                <img src="./ListImage/배너.png">
+                <img src="${cpath}/resources/css/ListImage/배너.png">
             </span>
         </div>
         <script>
@@ -95,18 +95,21 @@
                                 </tr>
                                 <!-- 선택한 상품이 넘어오는 곳-->
                                 <tr class="i_tr">
-                                    <td class="i_image">
-                                        <img src="./ListImage/1-1.png" name="i_idx" >
+                                <c:forEach var="vo" items="${ list }" varStatus="status">
+                                    <td class="i_image">                                   
+                                        <img src="${cpath}/resources/css/image/${vo.i_save}" name="i_idx" >                                    
                                     </td>
+                                </c:forEach>    
                                     <td>
-                                        <div class="i_name2"><a href="product.html" name="i_name">영주 별사과 600g</a></div>
+                                        <div class="i_name2"><a name="i_name">${list[0].p_name}</a></div>
                                     </td>
                                     <td name="p_option">
                                         <div class="p_option">1개</div>
                                     </td>
                                     <td name="p_price">
-                                        <div class="p_price">6930원</div>
+                                        <div class="p_price">원</div>
                                     </td>
+                                   
                                 </tr>
                             </table>
                         </li>
@@ -198,12 +201,16 @@
                         </li>
                     </ul>
                 </div>
-                <form action="#" name="form" method="get">
+                </form>
+                <form action="updatebuy" name="form" method="post">
                     <div class="button-area2">
-                        <button class="buy-button" type="submit"><a href="productReview.html" onclick="alert('구매하기가 완료됐습니다.');">구매하기</a></button>
+                    <input type="hidden"name="p_num" value="${vo.p_num}"/>
+                        <button class="buy-button" type="submit">
+                        	<a onclick="alert('구매하기가 완료됐습니다.');">구매하기</a>
+                        </button>
                     </div>
                 </form>
-            </form>
+            
             <div class="cart-footer">
                 <p>
                     주)구매하겠조 남구 송암로 60, 2층<br>

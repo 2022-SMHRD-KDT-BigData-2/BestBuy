@@ -94,3 +94,4 @@ values(i_info_i_num.nextval, '/resources/css/ListImage/4.png');
 insert into i_info(s_idx,u_id,p_num,s_amount,s_price)
 values(s_info_idx.nextval,gaeul,167,1,1);
 
+update s_info set s_payment='1' where p_num=167;

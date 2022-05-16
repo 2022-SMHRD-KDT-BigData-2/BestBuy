@@ -18,18 +18,18 @@
 		<!-- 상단 메뉴바 -->
 		<!-- 상단 메뉴바 -->
 			<div class="top">
-				<h1>FARM & FARM</h1>
+				<h1 onclick="location.href='${pageContext.request.contextPath}/main.do'">FARM & FARM</h1>
 				<div class="menu">
 					<ul id="nav">							
 							<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
 							<c:if test="${empty mvo.u_num && !empty mvo}">
-							<li><a href="ShoppingList.html">장바구니</a></li>
+							<li><a  href="${pageContext.request.contextPath}/ShoppingList/${mvo.u_id}">장바구니</a></li>
 						</c:if>
-						<li><a href="#">기업정보</a>
+						<li><a href="#">농산물가격예측</a>
 							<ul>
-								<li><a href="#">기업리스트</a></li>
-								<li><a href="#">기업등록</a></li>
-							</ul></li>
+								<li><a href="http://127.0.0.1:9000/">가격예측</a></li>
+							</ul>
+						</li>
 
 						<c:if test="${!empty mvo}">
 							<li><a href="#">마이페이지</a>

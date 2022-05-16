@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.ui.Model;
 import kr.pro.entity.Productimage;
+import kr.pro.entity.Review;
 import kr.pro.entity.product2;
 import kr.pro.entity.Market;
 import kr.pro.entity.Market2;
@@ -166,19 +168,19 @@ public class ProController<ShoppingList> {
 			}
 
 		}
-		return "redirect:/myproduct.do";
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/searchproduct.do")
 	public String searchproduct(Model model, product2 p_kind) {
-		List<product2> slist = proMapper.searchproduct(p_kind);
+		List<product2> slist = proMapper.searchproduct(p_kind);		
 		model.addAttribute("slist", Deduplication_List(slist));
 		return "searchproduct";
 	}
 
-	@RequestMapping("/myproduct.do")
-	public String myproduct(Model model) {
-		List<product2> list = proMapper.myproduct();		
+	@RequestMapping("/myproduct.do/{u_num}")
+	public String myproduct(Model model, @PathVariable("u_num") int u_num) {
+		List<product2> list = proMapper.myproduct(u_num);		
 		model.addAttribute("mlist", Deduplication_List(list));
 
 		return "myproduct";
@@ -194,7 +196,7 @@ public class ProController<ShoppingList> {
 	@RequestMapping("/myproductDelete.do/{p_num}")
 	public String myproductDelete(@PathVariable("p_num") int p_num, Model model) {
 		proMapper.myproductDelete(p_num);
-		return "redirect:/myproduct.do";
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/myproductUpdate.do/{p_num}")
@@ -212,7 +214,9 @@ public class ProController<ShoppingList> {
 	@RequestMapping("/market2.do/{p_num}")
 	public String market2(@PathVariable("p_num") int p_num, Model model) {
 		List<product2> list = proMapper.myproduct2(p_num);
+		List<Review> rlist = proMapper.reviewList(p_num);
 		model.addAttribute("list", list);
+		model.addAttribute("rlist", rlist);
 		return "market2";
 	}
 	
@@ -221,7 +225,7 @@ public class ProController<ShoppingList> {
 		proMapper.ShoppingListinsert(vo);
 		HttpSession session = request.getSession();
 		session.setAttribute("vo", vo);
-		return "ShoppingList";
+		return "redirect:/";
 	}
 	
 	
@@ -267,8 +271,46 @@ public class ProController<ShoppingList> {
 			}
 		}		
 		model.addAttribute("list", unique_list);
-		return"productBuy";		
+		return "productBuy";		
 	}
+	
+	 @RequestMapping("/review.do")
+     public String review(Model model, int p_num) {
+         model.addAttribute("p_num", p_num);
+        return "review";
+  }
+   @RequestMapping("/reviewinsert.do")
+   public @ResponseBody void reviewinsert(Review vo) {
+      proMapper.reviewinsert(vo);       
+   }
+  
+  @RequestMapping("/uploadreview.do")
+  public @ResponseBody String uploadFilereview(MultipartFile[] upload, HttpServletRequest request, Productimage vo,
+        Productimage Productimage, Product pvo) {
+     String reName=null;
+     String saveDir = "C:\\Users\\SM014\\git\\BestBuy\\Project2\\src\\main\\webapp\\resources\\imagereview";
+     File dir = new File(saveDir);
+
+     if (!dir.exists())
+        dir.mkdirs();
+
+     for (MultipartFile f : upload) {
+        if (!f.isEmpty()) {
+           String orifileName = f.getOriginalFilename();
+           String ext = orifileName.substring(orifileName.lastIndexOf("."));
+           SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+           int rand = (int) (Math.random() * 1000);
+           reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+           try {
+              f.transferTo(new File(saveDir + "/" + reName));
+           } catch (IllegalStateException | IOException e) {
+           }
+        }
+
+     }
+     return reName;
+  }
+
 	
 	private List<product2> Deduplication_List(List<product2> _input_list)
 	{

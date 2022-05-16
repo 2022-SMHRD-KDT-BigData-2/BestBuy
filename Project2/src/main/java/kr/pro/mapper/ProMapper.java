@@ -9,6 +9,7 @@ import kr.pro.entity.Market2;
 import kr.pro.entity.Member;
 import kr.pro.entity.Product;
 import kr.pro.entity.Productimage;
+import kr.pro.entity.Review;
 import kr.pro.entity.product2;
 
 
@@ -29,7 +30,7 @@ public interface ProMapper {
 
 	public Product productp_num(Product pvo);
 	
-	public List<product2> myproduct();
+	public List<product2> myproduct(int u_num);
 	
 	public List<Productimage> myproductimg();
 	
@@ -49,4 +50,9 @@ public interface ProMapper {
 	public void insertGo(Product vo);
 	
 	public void updatebuy(Market vo);
+	
+	public void reviewinsert(Review vo);
+
+	public List<Review> reviewList(int p_num);
+
 }

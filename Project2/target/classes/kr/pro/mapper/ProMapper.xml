@@ -39,7 +39,7 @@
 	<select id="myproduct" resultType="kr.pro.entity.product2">
 		select p.p_name, p.p_num, i.i_num, i.i_save
 		from p_info p, i_info i
-		where p.p_num = i.p_num
+		where p.p_num = i.p_num and p.u_num = #{u_num}
 		order by p.p_num
 	</select>
 	
@@ -50,18 +50,18 @@
 
 	<select id="searchproduct" resultType="kr.pro.entity.product2">
 		select * from p_info p, i_info i
-		where p_kind like '%'||#{p_kind}||'%'
+		where p.p_num=i.p_num and p_kind like '%'||#{p_kind}||'%'
 	</select>
 	
 	<select id="market" resultType="kr.pro.entity.product2">
-	   	select p.p_name, p.p_num,p.p_price, i.i_num, i.i_save
+	   	select p.p_name, p.p_num, p.p_price, p.p_grade, i.i_num, i.i_save
 		from p_info p, i_info i
 	    where p.p_num=i.p_num
 	    order by p.p_num
 	</select>
 	
 	<insert id ="ShoppingListinsert" parameterType="kr.pro.entity.Market">
-	    insert into s_info(s_idx,u_id,p_num,s_price,s_amonut)
+	    insert into s_info(s_idx,u_id,p_num,s_price,s_amount)
 	    values (s_info_idx.nextval, #{u_id}, #{p_num}, #{s_price},#{s_amount})
 	</insert>
 
@@ -75,6 +75,14 @@
        update p_info set p_grade=#{p_grade} where p_num=#{p_num}
    </update>
 
+	<insert id="reviewinsert" parameterType="kr.pro.entity.Review">
+       insert into r_info values(r_info_r_num.nextval, #{p_num}, #{r_writer},#{r_star},#{r_review}, #{r_grade}, sysdate)
+   </insert>
+   
+   <select id="reviewList" resultType="kr.pro.entity.Review">
+       select * from r_info where p_num=#{p_num}       
+   </select>
+	
 	
 
 </mapper>

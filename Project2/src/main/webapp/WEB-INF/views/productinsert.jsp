@@ -13,6 +13,15 @@
 <title>Document</title>
 <link rel="stylesheet" href="${cpath}/resources/css/product.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<style>
+.redline{
+color: red;
+}
+.redlist{
+width:130px;
+height:130px;
+}
+</style>
 </head>
 <body>
 <script type="text/javascript">
@@ -21,23 +30,23 @@ $('input[id=i_idx]'),attr('value','1')
 	<div class="img">
 		<!-- 상단 메뉴바 -->
 			<div class="top">
-				<h1>FARM & FARM</h1>
+				<h1 onclick="location.href='${pageContext.request.contextPath}/main.do'">FARM & FARM</h1>
 				<div class="menu">
 					<ul id="nav">							
 							<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
 							<c:if test="${empty mvo.u_num && !empty mvo}">
 							<li><a href="${pageContext.request.contextPath}/ShoppingList">장바구니</a></li>
 						</c:if>
-						<li><a href="#">기업정보</a>
+						<li><a href="#">농산물가격예측</a>
 							<ul>
-								<li><a href="#">기업리스트</a></li>
-								<li><a href="#">기업등록</a></li>
-							</ul></li>
+								<li><a href="http://127.0.0.1:9000/">가격예측</a></li>
+							</ul>
+						</li>
 
 						<c:if test="${!empty mvo}">
 							<li><a href="#">마이페이지</a>
 								<ul>
-									<li><a href="memberInfo.html">회원정보 수정</a></li>
+									<li><a href="#">회원정보 수정</a></li>
 									<c:if test="${empty mvo.u_num}">
 										<li><a onclick="Updateclick()">사업자 등록</a></li>
 									</c:if>
@@ -80,29 +89,40 @@ $('input[id=i_idx]'),attr('value','1')
             <div class="container">
                     <div class="form_txtInput">
                         <div class="join_top">
+                           <talble>
+                           <tr>
+                           <img class="redlist" src="${cpath}/resources/css/ListImage/top.png" alt="">
+                           <img class="redlist" src="${cpath}/resources/css/ListImage/left.png" alt="">
+                           <img class="redlist" src="${cpath}/resources/css/ListImage/bottom.png" alt="">
+                           <img class="redlist" src="${cpath}/resources/css/ListImage/right.png" alt="">
+                           </tr>
+                           </talble>
+                           <h3 class="redline">농산물 사진촬영 가이드라인</h3> 
+                           <br>
+                           <li>농산물의 상,하,좌,우 4장의 이미지를 업로드해주세요 !</li>
+                           <br>
+                           <li>사진속 물체가 꽉차게 촬영해주시면 정확도를 높일 수 있습니다.</li>
+                           <br>
+                           <li>하얀배경에서 촬영해주시면 더 명확한 평가를 받을 수 있습니다.</li>
+                           <br>
+                           <br>
                             <h3>상품 이미지 등록</h3>
                         </div>
                         <form action="${pageContext.request.contextPath}/upload.do" method="post" enctype="multipart/form-data">
                             <div class="p_info">
-                                <table class="image-preview" >
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </table>
+      
                                 <label><input type="file" name="upload"></label>
 								<br>
-								<label><input type="file" name="upload" /></label>
 								<br>
 								<label><input type="file" name="upload" /></label>
 								<br>
+								<br>
 								<label><input type="file" name="upload" /></label>
+								<br>
+								<br>
+								<label><input type="file" name="upload" /></label>
+								<br>
+								<br>
 								<input type="hidden"name="p_name" value="${vo.p_name}"/>
 								<input type="hidden"name="u_num" value="${vo.u_num}"/>
 								<br>

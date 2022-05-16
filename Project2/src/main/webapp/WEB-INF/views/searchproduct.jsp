@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,28 +20,27 @@
 	<div class="top_background">
 		<!-- 상단 메뉴바 -->
 		<div class="top">
-			<h1>FARM & FARM</h1>
+			<h1 onclick="location.href='${pageContext.request.contextPath}/main.do'">FARM & FARM</h1>
 			<div class="menu">
 				<ul id="nav">
 					<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
 					<c:if test="${empty mvo.u_num && !empty mvo}">
-						<li><a href="${pageContext.request.contextPath}/ShoppingList">장바구니</a></li>
+						<li><a  href="${pageContext.request.contextPath}/ShoppingList/${mvo.u_id}">장바구니</a></li>
 					</c:if>
-					<li><a href="#">기업정보</a>
-						<ul>
-							<li><a href="BusinessList.html">기업리스트</a></li>
-							<li><a href="BusinessRegi.html">기업등록</a></li>
-						</ul></li>
+					<li><a href="#">농산물가격예측</a>
+							<ul>
+								<li><a href="http://127.0.0.1:9000/">가격예측</a></li>
+							</ul>
+						</li>
 					<c:if test="${!empty mvo}">
 							<li><a href="#">마이페이지</a>
 								<ul>
-									<li><a href="memberInfo.html">회원정보 수정</a></li>
+									<li><a href="#">회원정보 수정</a></li>
 									<c:if test="${empty mvo.u_num}">
 										<li><a onclick="Updateclick()">사업자 등록</a></li>
 									</c:if>
 									<c:if test="${!empty mvo.u_num}">
-										<li><a
-											href="${pageContext.request.contextPath}/productinsert">물품등록</a></li>
+										<li><a href="${pageContext.request.contextPath}/productinsert">물품등록</a></li>
 									</c:if>
 								</ul>
 							</li>
@@ -61,7 +61,7 @@
 				<div class="intro2">
 					삶의 바탕이 되는 자연과 환경을<br>소중하게 생각합니다.
 				</div>
-				<div class="intro3">123</div>
+				<div class="intro3"><img src="${cpath}/resources/css/ListImage/선요소.png"></div>
 			</div>
 			<!-- 슬라이드 js 혹은 css 필요 -->
 			<div class="container">
@@ -79,20 +79,18 @@
 			<ul class="row">
 				<li>
 					<div class="best_item">
-						<h3>내상품목록</h3>
 					</div>
 				</li>
 				<c:forEach var="vo" items="${ slist }">
 				<c:url var="contentLink" value="/market2.do/${vo.p_num}"/>
 				<li class="cell">
-					<div class="img-box" style = "width : 200px;">
-					<img src="${cpath}/resources/css/image/${vo.i_save}" >
+					<div class="img-box"  >
+					<img src="${cpath}/resources/css/image/${vo.i_save}" style = "width : 200px;">
 					</div>
-					<div class="product-name" ><a href = "${contentLink}">${vo.p_num}</a></div>
-					<div class="product-name" >${vo.p_name}</div>
-					<div class="product-price">${vo.p_price}</div>
+					<div class="product-name" ><a href = "${contentLink}" style = "text-decoration: none; color: #000000;">${vo.p_name}</a></div>
+					<div class="product-price"><fmt:formatNumber value="${vo.p_price}" pattern="#,###"/></div>
 					<div class="product-name">${vo.p_kind}</div>
-					<div class="product-name">${vo.p_weight}kg</div>
+					<div class="product-name">${vo.p_weight}</div>
 				</li>
 			</c:forEach>	
 			</ul>

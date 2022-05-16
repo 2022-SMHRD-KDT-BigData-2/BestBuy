@@ -26,18 +26,18 @@ textarea {
    <div class="img">
       <!-- 상단 메뉴바 -->
          <div class="top">
-            <h1>FARM & FARM</h1>
+            <h1 onclick="location.href='${pageContext.request.contextPath}/main.do'">FARM & FARM</h1>
             <div class="menu">
                <ul id="nav">                     
                      <li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
                      <c:if test="${empty mvo.u_num && !empty mvo}">
-                     <li><a href="${pageContext.request.contextPath}/ShoppingList">장바구니</a></li>
+                     <li><a  href="${pageContext.request.contextPath}/ShoppingList/${mvo.u_id}">장바구니</a></li>
                   </c:if>
-                  <li><a href="#">기업정보</a>
-                     <ul>
-                        <li><a href="#">기업리스트</a></li>
-                        <li><a href="#">기업등록</a></li>
-                     </ul></li>
+                  <li><a href="#">농산물가격예측</a>
+							<ul>
+								<li><a href="http://127.0.0.1:9000/">가격예측</a></li>
+							</ul>
+						</li>
 
                   <c:if test="${!empty mvo}">
                      <li><a href="#">마이페이지</a>
@@ -97,7 +97,7 @@ textarea {
                                         <tr>
                                             <th><span>상품명</span></th>
                                             <td>
-                                               
+                                    <input type="hidden"name="u_num" value="${mvo.u_num}" />          
                                     <input type="text" name="p_name" placeholder="상품명을 입력해주세요..">
                                  </td>
                                         </tr>
@@ -127,7 +127,7 @@ textarea {
                                                         <td><input type="text" name="p_pack"></td>
                                                     </tr>
                                                     <tr>
-                                                       <td class="p-info-td">상세설명</td>
+                                                       <td class="p-info-td">안내사항</td>
                                                        <td><textarea rows="8" name="p_data"></textarea></td>
                                                     </tr>
                                             </td>
@@ -141,10 +141,11 @@ textarea {
                         <input type="radio" name="p_option" value="2">특가</div>         
                             <div class="btn_wrap"> 
                                 <button type="submit" class="submit">상품등록</button>
+                                <button type="button" class="submit" onclick="location.href='javascript:history.back();'">돌아가기</button>
                             </div>
                             </div>
             </div>
-                        </form>   
+         </form>   
          </div>
       </div>
    </div>

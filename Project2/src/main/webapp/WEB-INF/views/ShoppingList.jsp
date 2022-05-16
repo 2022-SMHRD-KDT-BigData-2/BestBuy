@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,23 +20,23 @@
         <div class="top_background">
             <!-- 상단 메뉴바 -->
 			<div class="top">
-				<h1>FARM & FARM</h1>
+				<h1 onclick="location.href='${pageContext.request.contextPath}/main.do'">FARM & FARM</h1>
 				<div class="menu">
 					<ul id="nav">							
 							<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
 							<c:if test="${empty mvo.u_num && !empty mvo}">
 							<li><a href="#">장바구니</a></li>
 						</c:if>
-						<li><a href="#">기업정보</a>
+						<li><a href="#">농산물가격예측</a>
 							<ul>
-								<li><a href="#">기업리스트</a></li>
-								<li><a href="#">기업등록</a></li>
-							</ul></li>
+								<li><a href="http://127.0.0.1:9000/">가격예측</a></li>
+							</ul>
+						</li>
 
 						<c:if test="${!empty mvo}">
 							<li><a href="#">마이페이지</a>
 								<ul>
-									<li><a href="memberInfo.html">회원정보 수정</a></li>
+									<li><a href="#">회원정보 수정</a></li>
 									<c:if test="${empty mvo.u_num}">
 										<li><a onclick="Updateclick()">사업자 등록</a></li>
 									</c:if>
@@ -64,21 +66,24 @@
                 <div class="grid-left">
                     <table>
                         <tr>
-                            <td><input type="checkbox" id="check"><label for="check"></label></td>
+                            <td></td>
                             <td>전체선택</td>
-                            <td>선택삭제</td>
                         </tr>
+                         <c:set var="total" value="0"/>
+                         <c:set var="tot" value="0"/>
                         <c:forEach var="vo" items="${ list }" varStatus="status">
+                            <c:set var="tot" value="${vo.s_price}"/>
+                            <c:set var="total" value="${tot+total}"/>
                         <tr>
-                       
-                            <td><input type="checkbox" id="check"><label for="check"></label></td>
+                       		<td><input type="checkbox" name="xxx" value="yyy" checked></td>
                             <td><img src="${cpath}/resources/css/image/${vo.i_save}"  id="i_idx" name="i_idx"></td>
                             <td><div class="i_name"><a name="i_name">${vo.p_name}</a><br>
                             						<a name="i_name">${vo.s_amount}</a>개<br>
-                            						<a name="i_name">${vo.s_price}</a>원</div></td>
+                            						<a name="i_name"><fmt:formatNumber value="${vo.s_price}" pattern="#,###"/></a>원</div></td>
                             <td><div id="my_sum"></div></td>
                         </tr>
                         </c:forEach>
+                      
                     </table>
 
                 </div>
@@ -119,11 +124,11 @@
                                     <table>
                                         <tr>
                                             <td>배송비</td>
-                                            <td colspan="3">3000원</td>
+                                            <td colspan="3">3,000원</td>
                                         </tr>
                                         <tr>
                                             <td>총 상품금액</td>
-                                            <td colspan="2"><div id="my_sum"></div></td>
+                                            <td colspan="2"><fmt:formatNumber value="${total}" pattern="#,###"/>원</div></td>
                                         </tr>
                                     </table>
                                 </div>

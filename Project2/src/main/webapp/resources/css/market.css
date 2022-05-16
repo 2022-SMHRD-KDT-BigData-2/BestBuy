@@ -11,7 +11,7 @@ font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, '
 }
 
 html{
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
     }
     body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
 

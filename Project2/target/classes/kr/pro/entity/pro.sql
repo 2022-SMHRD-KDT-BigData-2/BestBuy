@@ -95,3 +95,10 @@ insert into i_info(s_idx,u_id,p_num,s_amount,s_price)
 values(s_info_idx.nextval,gaeul,167,1,1);
 
 update s_info set s_payment='1' where p_num=167;
+
+select p.p_name, p.p_num, i.i_num, i.i_save
+		from p_info p, i_info i
+		where p.p_num = i.p_num and p.u_num='1';
+		
+select * from p_info p, i_info i
+		where p_kind like '%'||'사과'||'%';

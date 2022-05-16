@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -19,23 +20,23 @@
 	<div class="top_background">
 		<!-- 상단 메뉴바 -->
 			<div class="top">
-				<h1>FARM & FARM</h1>
+				<h1 onclick="location.href='${pageContext.request.contextPath}/main.do'">FARM & FARM</h1>
 				<div class="menu">
 					<ul id="nav">							
 							<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
 							<c:if test="${empty mvo.u_num && !empty mvo}">
-							<li><a href="${pageContext.request.contextPath}/ShoppingList">장바구니</a></li>
+							<li><a  href="${pageContext.request.contextPath}/ShoppingList/${mvo.u_id}">장바구니</a></li>
 						</c:if>
-						<li><a href="#">기업정보</a>
+						<li><a href="#">농산물가격예측</a>
 							<ul>
-								<li><a href="#">기업리스트</a></li>
-								<li><a href="#">기업등록</a></li>
-							</ul></li>
+								<li><a href="http://127.0.0.1:9000/">가격예측</a></li>
+							</ul>
+						</li>
 
 						<c:if test="${!empty mvo}">
 							<li><a href="#">마이페이지</a>
 								<ul>
-									<li><a href="memberInfo.html">회원정보 수정</a></li>
+									<li><a href="#">회원정보 수정</a></li>
 									<c:if test="${empty mvo.u_num}">
 										<li><a onclick="Updateclick()">사업자 등록</a></li>
 									</c:if>
@@ -102,22 +103,22 @@
                         <li>
                             <div class="img-box"><a href="product.html"><img class="img" src="${cpath}/resources/css/ListImage/1.png" alt=""></a></div>
                             <div class="product-name">영주 별사과 600g</div>
-                            <div class="product-price">6930원</div>
+                            <div class="product-price">6,930원</div>
                         </li>
                         <li>
                             <div class="img-box"><a href="product.html"><img class="img" src="${cpath}/resources/css/ListImage/3.png" alt=""></a></div>
                             <div class="product-name">왕사과,왕배</div>
-                            <div class="product-price">12900원</div>
+                            <div class="product-price">12,900원</div>
                         </li>
                         <li>
                             <div class="img-box"><a href="product.html"><img class="img" src="${cpath}/resources/css/ListImage/2.png" alt=""></a></div>
                             <div class="product-name">GAP 미시마 사과 2kg</div>
-                            <div class="product-price">13990원</div>
+                            <div class="product-price">13,990원</div>
                         </li>
                         <li>
                             <div class="img-box"><a href="product.html"><img class="img" src="${cpath}/resources/css/ListImage/7.png" alt=""></a></div>
                             <div class="product-name">용암 참외 1.2kg</div>
-                            <div class="product-price">16900원</div>
+                            <div class="product-price">16,900원</div>
                         </li>
                     </ul>
                 </div>
@@ -130,12 +131,14 @@
             </div>
             <ul class="row">             
                 <c:forEach var="vo" items="${ market_list }">
+                <c:if test="${!empty vo.p_grade}">
 				<c:url var="contentLink" value="/market2.do/${vo.p_num}"/>
 				 <li class="cell">
-                    <div class="img-box" style = "width : 200px;" ><img src="${cpath}/resources/css/image/${vo.i_save}" ></div>
-                    <div class="product-name"><a href = "${contentLink}">${vo.p_name}</a></div>                 
-                    <div class="product-price">${vo.p_price}</div>
+                    <div class="img-box" style = "width : 330px;" ><img src="${cpath}/resources/css/image/${vo.i_save}" style = "width : 300px;"></div>
+                    <div class="product-name"><a href = "${contentLink}" style = "text-decoration: none; color: #000000;">${vo.p_name}</a></div>                 
+                    <div class="product-price"><fmt:formatNumber value="${vo.p_price}" pattern="#,###"/></div>                    
                 </li>
+                </c:if>
                 </c:forEach>	
             </ul>
         </div>  

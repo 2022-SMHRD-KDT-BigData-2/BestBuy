@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
@@ -20,18 +21,18 @@
             <!-- 상단 메뉴바 -->
             <!-- 상단 메뉴바 -->
 			<div class="top">
-				<h1>FARM & FARM</h1>
+				<h1 onclick="location.href='${pageContext.request.contextPath}/main.do'">FARM & FARM</h1>
 				<div class="menu">
 					<ul id="nav">							
 							<li><a href="${pageContext.request.contextPath}/Market">마켓</a></li>
 							<c:if test="${empty mvo.u_num && !empty mvo}">
-							<li><a href="${pageContext.request.contextPath}/ShoppingList">장바구니</a></li>
+							<li><a  href="${pageContext.request.contextPath}/ShoppingList/${mvo.u_id}">장바구니</a></li>
 						</c:if>
-						<li><a href="#">기업정보</a>
+						<li><a href="#">농산물가격예측</a>
 							<ul>
-								<li><a href="#">기업리스트</a></li>
-								<li><a href="#">기업등록</a></li>
-							</ul></li>
+								<li><a href="http://127.0.0.1:9000/">가격예측</a></li>
+							</ul>
+						</li>
 
 						<c:if test="${!empty mvo}">
 							<li><a href="#">마이페이지</a>
@@ -95,21 +96,20 @@
                                 </tr>
                                 <!-- 선택한 상품이 넘어오는 곳-->
                                 <tr class="i_tr">
+                                <c:set var="total" value="0"/>
+                         		<c:set var="tot" value="0"/>
                                 <c:forEach var="vo" items="${ list }" varStatus="status">
+                                <c:set var="tot" value="${vo.s_price}"/>
+                            	<c:set var="total" value="${tot+total}"/>
                                     <td class="i_image">                                   
                                         <img src="${cpath}/resources/css/image/${vo.i_save}" name="i_idx" >                                    
-                                    </td>
-                                </c:forEach>    
-                                    <td>
-                                        <div class="i_name2"><a name="i_name">${list[0].p_name}</a></div>
-                                    </td>
-                                    <td name="p_option">
-                                        <div class="p_option">1개</div>
-                                    </td>
-                                    <td name="p_price">
-                                        <div class="p_price">원</div>
-                                    </td>
-                                   
+                                    
+                                        <div class="i_name2"><a name="i_name">${vo.p_name}</a></div>
+                                        <div class="p_option">${vo.s_amount}개</div>
+                                        <div class="p_price"><fmt:formatNumber value="${vo.s_price}" pattern="#,###"/>원</div>
+                                   </c:forEach>  
+                                   <td>총 상품금액</td>
+                                   <td colspan="2"><fmt:formatNumber value="${total}" pattern="#,###"/>원</td>
                                 </tr>
                             </table>
                         </li>
@@ -202,10 +202,9 @@
                     </ul>
                 </div>
                 </form>
-                <form action="updatebuy" name="form" method="post">
+                <form>
                     <div class="button-area2">
-                    <input type="hidden"name="p_num" value="${vo.p_num}"/>
-                        <button class="buy-button" type="submit">
+                        <button class="buy-button" type="button" onclick="location.href='${pageContext.request.contextPath}/main.do'">
                         	<a onclick="alert('구매하기가 완료됐습니다.');">구매하기</a>
                         </button>
                     </div>
